@@ -113,6 +113,7 @@ export default {
   },
   data() {
     return {
+      type_val: 0,
       industry: {
         list: [
           {
@@ -180,6 +181,7 @@ export default {
     };
   },
   mounted() {
+    this.type_val = this.$route.params.type // 0铜，1铝
     this.get_downstreamindustry();
     this.get_manufacturingenterprise();
     this.get_supply();

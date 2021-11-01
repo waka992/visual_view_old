@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="btns">
-          <div @click="$router.push({ path: '/supply' })" class="btn btn1">
+          <div @click="$router.push({ path: '/supply', name: 'supply', params:{type: mode.index}})" class="btn btn1">
             <img src="/static/images/industrychain-1.png" alt="" srcset="" />
             <div>供需关系</div>
           </div>
@@ -107,7 +107,7 @@ export default {
       this.mode.index = k;
       this.get_sort(v.val);
       this.get_trend(v.val);
-      // this.get_fly(v.val);
+      this.get_fly(v.val);
     },
     // 获取排名
     get_sort(mode = 1) {
@@ -559,6 +559,7 @@ export default {
 
       industrychain
         .flyline({
+          mode: mode, // 0 铜 1 铝
           fields:
             "id,longitude_start,latitude_start,longitude_end,latitude_end",
         })
