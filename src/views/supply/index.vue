@@ -181,11 +181,11 @@ export default {
     };
   },
   mounted() {
-    this.type_val = this.$route.params.type // 0铜，1铝
-    this.get_downstreamindustry();
-    this.get_manufacturingenterprise();
-    this.get_supply();
-    this.get_stoage();
+    this.type_val = Number(this.$route.params.type) + 1 // 1铜，2铝
+    this.get_downstreamindustry(this.type_val);
+    this.get_manufacturingenterprise(this.type_val);
+    this.get_supply(this.type_val);
+    this.get_stoage(this.type_val);
   },
   methods: {
     // 获取下游企业
@@ -199,11 +199,36 @@ export default {
           if (e.code != 1000) {
             return;
           }
-          let data = e.data.results;
-          data.map((v, k) => {
-            this.industry.list[k].title = v.title;
-            this.industry.list[k].desc = v.description;
-          });
+          let data = []
+          if (mode === 2) {
+            this.industry.list = [
+                {
+                  title: "建筑业",
+                  desc:
+                    "建筑业是我国铝材最大的下游应用领域，占比达到33%。建筑安装业作为建筑物内各种设备的安装活动以及施工中的线路敷设和管道安装活动，建筑业的发展必然也带来了建筑安装的相关需求。",
+                  img: "/static/images/supply-img2.png",
+                },
+                {
+                  title: "运输业",
+                  desc:
+                    "铝型材在交通运输业的应用极为广泛，汽车制造是工业铝型材的主要应用领域之一，而铝的应用在轨道交通发展上也发挥了重要角色。铝合金材料则是汽车轻量化目标的主要应用材料。2020年，汽车产销2522.5万辆和2531.1万辆，同比下降2.0%和1.9%，与上年相比，分别收窄5.5个百分点和6.3个百分点。",
+                  img: "/static/images/supply-img4.png",
+                },
+                {
+                  title: "包装行业",
+                  desc:
+                    "铝箔是铝加工材产业中附加值较高的细分产品，行业发展迅速，市场规模与产销量连年保持高速增长，由于其在导热、循环利用领域优异的应用性能，使得铝箔在家电、包装等方面的应用得到极大拓展。",
+                  img: "/static/images/supply-img11.png",
+                },
+            ]
+          }
+          else {
+            data = e.data.results;
+            data.map((v, k) => {
+              this.industry.list[k].title = v.title;
+              this.industry.list[k].desc = v.description;
+            });
+          }
         });
     },
     // 获取加工企业
@@ -218,25 +243,67 @@ export default {
           if (e.code != 1000) {
             return;
           }
-          let data = e.data.results;
-          this.enterprise.list.map((v, k) => {
-            this.enterprise.list[k].title = data[k].title;
-            this.enterprise.list[k].img = data[k].icon;
-            this.enterprise.list[k].desc = data[k].description;
-            this.enterprise.list[
-              k
-            ].num = `产量: ${data[k].annual_production}吨`;
-          });
-
-          this.enterprise1.list.map((v, k) => {
-            let index = k + 2;
-            this.enterprise1.list[k].title = data[index].title;
-            this.enterprise1.list[k].img = data[index].icon;
-            this.enterprise1.list[k].desc = data[index].description;
-            this.enterprise1.list[
-              k
-            ].num = `产量: ${data[index].annual_production}吨`;
-          });
+          let data = []
+          if (mode === 2) {
+              this.enterprise = {
+                list: [
+                  {
+                    title: "山东魏桥",
+                    num: "产量: 646万吨",
+                    desc:
+                      "山东魏桥铝电有限公司是一家集热电铝业联产的民营企业。成立于2002年，是集热电、氧化铝、电解铝、铝深加工于一体的特大型综合企业。",
+                    img: "/static/images/supply-img14.png",
+                  },
+                  {
+                    title: "中国铝业",
+                    num: "产量: 369万吨",
+                    desc:
+                      "中国铝业股份有限公司是中央管理的国有重要骨干企业，从事矿产资源开发、有色金属冶炼加工、相关贸易及工程技术服务等，是全球第二大氧化铝供应商、第三大电解铝供应商和第五大铝加工材供应商，同业综合实力位居全国第一。",
+                    img: "/static/images/supply-img13.png",
+                  },
+               
+                ],
+              }
+            this.enterprise1 = {
+              list: [
+                {
+                  title: "信发铝电",
+                  num: "产量: 218万吨",
+                  desc:
+                    "山东信发铝电集团有限公司是集发电、供热、电解铝、氧化铝、中高密度板、铝深加工等产业链条于一体的现代化大型企业集团",
+                  img: "/static/images/supply-img15.png",
+                },
+                {
+                  title: "东方希望",
+                  num: "产量: 190万吨",
+                  desc:
+                    "新疆东方希望有色金属有限公司经营范围包括原铝、铝锭、铝板、铝棒、铝合金、铝母线及其加工产品的生产与销售等。",
+                  img: "/static/images/supply-img12.png",
+                },
+              ],
+            }
+          }
+          else {
+            data = e.data.results;
+            this.enterprise.list.map((v, k) => {
+              this.enterprise.list[k].title = data[k].title;
+              this.enterprise.list[k].img = data[k].icon;
+              this.enterprise.list[k].desc = data[k].description;
+              this.enterprise.list[
+                k
+              ].num = `产量: ${data[k].annual_production}吨`;
+            });
+  
+            this.enterprise1.list.map((v, k) => {
+              let index = k + 2;
+              this.enterprise1.list[k].title = data[index].title;
+              this.enterprise1.list[k].img = data[index].icon;
+              this.enterprise1.list[k].desc = data[index].description;
+              this.enterprise1.list[
+                k
+              ].num = `产量: ${data[index].annual_production}吨`;
+            });
+          }
         });
     },
     // 获取供需关系
@@ -311,17 +378,24 @@ export default {
           if (e.code != 1000) {
             return;
           }
-          let data = e.data.results.reverse();
-          option.xAxis.data = [];
-          option.series[0].data = [];
-
-          data.map((v, k) => {
-            let name = v.statis_date;
-            let value = v.amount;
-
-            option.xAxis.data.push(name);
-            option.series[0].data.push(value);
-          });
+          let data = {}
+          if (mode === 2) {
+            data = [{"id":3,"statis_date":"202109","amount":346.1},{"id":4,"statis_date":"202108","amount":351.8},{"id":5,"statis_date":"202107","amount":359.2},{"id":6,"statis_date":"202106","amount":339.6},{"id":7,"statis_date":"202105","amount":321},{"id":8,"statis_date":"202104","amount":308.5},{"id":9,"statis_date":"202103","amount":293.1},{"id":10,"statis_date":"202102","amount":285.1},{"id":11,"statis_date":"202101","amount":296.5}]
+          }
+          else {
+            data = e.data.results
+          }
+            data = data.reverse();
+            option.xAxis.data = [];
+            option.series[0].data = [];
+  
+            data.map((v, k) => {
+              let name = v.statis_date;
+              let value = v.amount;
+  
+              option.xAxis.data.push(name);
+              option.series[0].data.push(value);
+            });
 
           this.$refs.abc.updateChart(option);
         });
@@ -337,7 +411,14 @@ export default {
           if (e.code != 1000) {
             return;
           }
-          let data = e.data.results.reverse();
+          let data = []
+          if (mode === 2) {
+            data = [{"id":2,"statis_date":"202109","amount":307.5},{"id":7,"statis_date":"202108","amount":315.5},{"id":6,"statis_date":"202107","amount":326},{"id":5,"statis_date":"202106","amount":329},{"id":4,"statis_date":"202105","amount":331.7},{"id":8,"statis_date":"202104","amount":334.6},{"id":3,"statis_date":"202103","amount":327.6},{"id":9,"statis_date":"202102","amount":310.5},{"id":10,"statis_date":"202101","amount":315.1}]
+          }
+          else {
+            data = e.data.results
+          }
+          data = data.reverse();
           // option.xAxis.data = [];
           option.series[1].data = [];
 
@@ -455,7 +536,14 @@ export default {
           if (e.code != 1000) {
             return;
           }
-          let data = e.data.results.reverse();
+          let data = []
+          if (mode === 2) {
+            data = [{"id":1,"statis_date":"202109","amount":233806},{"id":1,"statis_date":"202108","amount":248926},{"id":2,"statis_date":"202107","amount":256214},{"id":3,"statis_date":"202106","amount":288741},{"id":4,"statis_date":"202105","amount":329572},{"id":5,"statis_date":"202104","amount":356609},{"id":6,"statis_date":"202103","amount":378792},{"id":7,"statis_date":"202102","amount":334440},{"id":8,"statis_date":"202101","amount":239504},{"id":9,"statis_date":"202012","amount":224235},{"id":10,"statis_date":"202011","amount":220373}].reverse()
+            
+          }
+          else {
+            data = e.data.results.reverse();
+          }
           option.xAxis.data = [];
           option.series[0].data = [];
 
@@ -585,6 +673,10 @@ $yellow: #fec979;
             height: 50px;
             right: 0;
             top: 0;
+            // object-fit: cover;
+            // clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            background-size: cover;
+            background-repeat: no-repeat;
           }
           .num {
             margin-top: 10px;

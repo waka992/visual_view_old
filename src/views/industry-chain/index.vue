@@ -567,8 +567,15 @@ export default {
           if (e.code != 1000) {
             return;
           }
-          let data = e.data.results;
-
+          // 铝
+          let data = []
+          if (mode === 2) {
+            data = [{"id":6,"longitude_start":19.015908,"latitude_start":52.800932,"longitude_end":115.27226,"latitude_end":38.635842},{"id":7,"longitude_start":-10.051821,"latitude_start":10.442355,"longitude_end":115.27226,"latitude_end":38.635842},{"id":8,"longitude_start":117.165486,"latitude_start":0.138001,"longitude_end":115.27226,"latitude_end":38.635842}]
+          }
+          else {
+            // data = e.data.results;
+            data = [{"id":2,"longitude_start":139.630281,"latitude_start":36.661181,"longitude_end":115.27226,"latitude_end":38.635842},{"id":3,"longitude_start":68.248769,"latitude_start":47.97209,"longitude_end":115.27226,"latitude_end":38.635842},{"id":4,"longitude_start":134.846984,"latitude_start":-25.431389,"longitude_end":115.27226,"latitude_end":38.635842},{"id":5,"longitude_start":-75.619787,"latitude_start":-9.422664,"longitude_end":115.27226,"latitude_end":38.635842}]
+          }
           option.series[0].data = [];
           option.series[1].data = [];
 
