@@ -29,7 +29,6 @@ let option = {
   },
   yAxis: {
     type: "category",
-    data: ["四 美国", "三 德国", "二 韩国", "一 中国"],
     axisLine: {
       show: false,
     },
@@ -42,47 +41,37 @@ let option = {
   },
   series: [
     {
-      type: "bar",
-      barWidth: "30%",
-      data: [
-        {
-          value: 400,
-          name: "中国",
-          itemStyle: {
-            color: {
-              type: "linear",
-              x: 0,
-              y: 0,
-              x2: 0,
-              y2: 1,
-              colorStops: [
-                {
-                  offset: 0,
-                  color: "#46BFEC", // 0% 处的颜色
-                },
-                {
-                  offset: 1,
-                  color: "#35B1DE", // 100% 处的颜色
-                },
-              ],
-            },
-          },
-        },
-      ],
-    },
-    {
       type: "pie",
       radius: [0, "60%"],
       center: ["50%", "35%"],
       showEmptyCircle: false,
       data: [
         {
-          value: 0,
-          name: "中国",
-        
+          value: 63.45,
+          name: "铝压延加工",
+        },
+        {
+          value: 23.96,
+          name: "铜压延加工",
+        },
+        {
+          value: 6.84,
+          name: "有色金属合金制造",
+        },
+        {
+          value: 2.82,
+          name: "铜冶炼",
+        },
+        {
+          value: 2.81,
+          name: "其他有色金属压延加工",
+        },
+        {
+          value: 0.12,
+          name: "稀有稀土金属压延加工",
         },
       ],
-      roseType: "radius",
+      roseType: false,
       animationType: "scale",
       animationEasing: "elasticOut",
       animationDelay: function (idx) {

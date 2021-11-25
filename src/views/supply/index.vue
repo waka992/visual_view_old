@@ -673,10 +673,6 @@ $yellow: #fec979;
             height: 50px;
             right: 0;
             top: 0;
-            // object-fit: cover;
-            // clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-            background-size: cover;
-            background-repeat: no-repeat;
           }
           .num {
             margin-top: 10px;

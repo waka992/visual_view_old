@@ -32,9 +32,13 @@
             <img src="/static/images/industrychain-1.png" alt="" srcset="" />
             <div>供需关系</div>
           </div>
-          <div @click="$router.push({ path: '/industrychain/trade' })" class="btn">
+          <!-- <div @click="$router.push({ path: '/industrychain/trade' })" class="btn">
             <img src="/static/images/supply-img10.png" alt="" srcset="" />
             <div>贸易关系</div>
+          </div> -->
+          <div @click="$router.push({ path: '/industrychain/localsituation' })" class="btn">
+            <img src="/static/images/supply-img10.png" alt="" srcset="" />
+            <div>本土情况</div>
           </div>
         </div>
         <div>
@@ -177,76 +181,8 @@ export default {
             type: "pie",
             radius: [0, "60%"],
             center: ["50%", "35%"],
+            showEmptyCircle: false,
             data: [
-              {
-                value: 100,
-                name: "美国",
-                itemStyle: {
-                  color: {
-                    type: "linear",
-                    x: 0,
-                    y: 0,
-                    x2: 0,
-                    y2: 1,
-                    colorStops: [
-                      {
-                        offset: 0,
-                        color: "#FF002C", // 0% 处的颜色
-                      },
-                      {
-                        offset: 1,
-                        color: "#FF3881", // 100% 处的颜色
-                      },
-                    ],
-                  },
-                },
-              },
-              {
-                value: 130,
-                name: "德国",
-                itemStyle: {
-                  color: {
-                    type: "linear",
-                    x: 0,
-                    y: 0,
-                    x2: 0,
-                    y2: 1,
-                    colorStops: [
-                      {
-                        offset: 0,
-                        color: "#EB9594", // 0% 处的颜色
-                      },
-                      {
-                        offset: 1,
-                        color: "#FE8CA7", // 100% 处的颜色
-                      },
-                    ],
-                  },
-                },
-              },
-              {
-                value: 200,
-                name: "韩国",
-                itemStyle: {
-                  color: {
-                    type: "linear",
-                    x: 0,
-                    y: 0,
-                    x2: 0,
-                    y2: 1,
-                    colorStops: [
-                      {
-                        offset: 0,
-                        color: "#FFC86B", // 0% 处的颜色
-                      },
-                      {
-                        offset: 1,
-                        color: "#FEAA53", // 100% 处的颜色
-                      },
-                    ],
-                  },
-                },
-              },
               {
                 value: 400,
                 name: "中国",
@@ -270,9 +206,7 @@ export default {
                   },
                 },
               },
-            ].sort(function (a, b) {
-              return a.value - b.value;
-            }),
+            ],
             roseType: "radius",
             animationType: "scale",
             animationEasing: "elasticOut",
@@ -335,27 +269,28 @@ export default {
 
             return color;
           }
-
+          let colorArr = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
           data.map((v, k) => {
             let name = v.country.title;
             let name1 = `${k + 1} ${name}`;
             let value = v.amount;
 
-            let color = random_color();
+            // let color = random_color();
 
             option.yAxis.data.unshift(name1);
+            
             option.series[0].data.unshift({
               value,
               name,
               itemStyle: {
-                color,
-              },
+                color: colorArr[k]
+              }
             });
             option.series[1].data.unshift({
               value,
               name,
               itemStyle: {
-                color,
+                color: colorArr[k]
               },
             });
           });

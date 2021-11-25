@@ -29,13 +29,13 @@
                     yAxisIndex: 0,
                     data: []
                 },
-                yAmplitude: {
-                    name: '涨跌',
-                    type: 'line',
-                    // stack: '涨跌',
-                    yAxisIndex: 1,
-                    data: []
-                },
+                // yAmplitude: {
+                //     name: '涨跌',
+                //     type: 'line',
+                //     // stack: '涨跌',
+                //     yAxisIndex: 1,
+                //     data: []
+                // },
             }
         },
 
@@ -52,7 +52,7 @@
                         for (let i = 0; i < loopData.length; i++) {
                             this.xData[i] = loopData[i].statis_date.slice(-5)
                             this.yPrice.data[i] = loopData[i].index
-                            this.yAmplitude.data[i] = loopData[i].change
+                            // this.yAmplitude.data[i] = loopData[i].change
                         }
                         this.initChart();
                     }
@@ -69,7 +69,7 @@
                     tooltip: {
                         trigger: 'axis'
                     },
-                    color:['#ECBE37','#F90639'],
+                    color:['#F90639','#ECBE37',],
                     legend: {
                         data: ['价格指数', '涨跌'],
                         textStyle: {

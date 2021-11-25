@@ -24,17 +24,22 @@ Vue.use(Router)
 /**
  * constantRouterMap 代表那些不需要动态判断权限的路由，如登录页、404、等通用页面
  */
-export const constantRouterMap = [
-    {
+export const constantRouterMap = [{
         path: '/redirect',
         hidden: true,
         children: [{
             path: '/redirect/:path*',
-            component: () => import('@/views/redirect/index')
+            component: () =>
+                import ('@/views/redirect/index')
         }]
     },
     // 404路由
-    { path: '/404', component: () => import('@/views/error-page/404'), hidden: true },
+    {
+        path: '/404',
+        component: () =>
+            import ('@/views/error-page/404'),
+        hidden: true
+    },
     // 401路由
     //{ path: '/401', component: () => import('@/views/error-page/401'), hidden: true },
 
@@ -43,7 +48,8 @@ export const constantRouterMap = [
      */
     {
         path: '/',
-        component: () => import('@/views/index/index'),
+        component: () =>
+            import ('@/views/index/index'),
         name: 'index',
         meta: {
             title: '首页',
@@ -55,7 +61,8 @@ export const constantRouterMap = [
      */
     {
         path: '/friend',
-        component: () => import('@/views/friend/index'),
+        component: () =>
+            import ('@/views/friend/index'),
         name: 'friend',
         meta: {
             title: '合作伙伴',
@@ -67,7 +74,8 @@ export const constantRouterMap = [
      */
     {
         path: '/supply',
-        component: () => import('@/views/supply/index'),
+        component: () =>
+            import ('@/views/supply/index'),
         name: 'supply',
         meta: {
             title: '供需关系',
@@ -79,7 +87,8 @@ export const constantRouterMap = [
      */
     {
         path: '/industrychain',
-        component: () => import('@/views/industry-chain/index'),
+        component: () =>
+            import ('@/views/industry-chain/index'),
         name: 'industrychain',
         meta: {
             title: '产业链',
@@ -88,12 +97,25 @@ export const constantRouterMap = [
     /**
      * 贸易关系
      */
-     {
+    {
         path: '/industrychain/trade',
-        component: () => import('@/views/industry-chain/canvas'),
+        component: () =>
+            import ('@/views/industry-chain/canvas'),
         name: 'industrychain_trade',
         meta: {
             title: '贸易关系',
+        },
+    },
+    /**
+     * 本土企业
+     */
+    {
+        path: '/industrychain/localsituation',
+        component: () =>
+            import ('@/views/industry-chain/localsituation'),
+        name: 'industrychain_localsituation',
+        meta: {
+            title: '本土情况',
         },
     },
     /**
@@ -101,7 +123,8 @@ export const constantRouterMap = [
      */
     {
         path: '/exchangedata',
-        component: () => import('@/views/exchange-data/index'),
+        component: () =>
+            import ('@/views/exchange-data/index'),
         name: 'exchangedata',
         meta: {
             title: '交易数据',
@@ -113,7 +136,8 @@ export const constantRouterMap = [
      */
     {
         path: '/industryposition',
-        component: () => import('@/views/industry-position/index'),
+        component: () =>
+            import ('@/views/industry-position/index'),
         name: 'industryposition',
         meta: {
             title: '行业定位',
@@ -125,7 +149,8 @@ export const constantRouterMap = [
      */
     {
         path: '/memorabilia',
-        component: () => import('@/views/memorabilia/index'),
+        component: () =>
+            import ('@/views/memorabilia/index'),
         name: 'industryposition',
         meta: {
             title: '荣誉和大事记',
@@ -137,7 +162,8 @@ export const constantRouterMap = [
      */
     {
         path: '/platformindex',
-        component: () => import('@/views/platformindex/index'),
+        component: () =>
+            import ('@/views/platformindex/index'),
         name: 'platformindex',
         meta: {
             title: '指数',
@@ -149,7 +175,8 @@ export const constantRouterMap = [
      */
     {
         path: '/trainsalon',
-        component: () => import('@/views/trainsalon/index'),
+        component: () =>
+            import ('@/views/trainsalon/index'),
         name: 'trainsalon',
         meta: {
             title: '培训和沙龙',
@@ -161,7 +188,8 @@ export const constantRouterMap = [
      */
     {
         path: '/interactive',
-        component: () => import('@/views/interactive/index'),
+        component: () =>
+            import ('@/views/interactive/index'),
         name: 'interactive',
         meta: {
             title: '互动交易',
@@ -173,7 +201,8 @@ export const constantRouterMap = [
      */
     {
         path: '/corporatestyle',
-        component: () => import('@/views/corporatestyle/index'),
+        component: () =>
+            import ('@/views/corporatestyle/index'),
         name: 'corporatestyle',
         meta: {
             title: '企业风采',
@@ -185,7 +214,8 @@ export const constantRouterMap = [
      */
     {
         path: '/welcome',
-        component: () => import('@/views/welcome/index'),
+        component: () =>
+            import ('@/views/welcome/index'),
         name: 'welcome',
         meta: {
             title: '欢迎',

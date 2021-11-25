@@ -3,8 +3,8 @@
         <BackGround />
         <Header title="企业风采"/>
         <div class="content">
-            <video-player class="vjs-custom-skin" ref="videoPlayer"
-            controls :options="playerOptions" @ready="playerReadied" @play="onPlayerPlay($event)"  @ended="onPlayerEnded($event)" ></video-player>
+            <!-- <video-player class="vjs-custom-skin" ref="videoPlayer"
+            controls :options="playerOptions" @ready="playerReadied" @play="onPlayerPlay($event)"  @ended="onPlayerEnded($event)" ></video-player> -->
         </div>
     </div>
 </template>
