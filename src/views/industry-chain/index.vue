@@ -38,7 +38,7 @@
           </div> -->
           <div @click="$router.push({ path: '/industrychain/localsituation' })" class="btn">
             <img src="/static/images/supply-img10.png" alt="" srcset="" />
-            <div>本土情况</div>
+            <div>佛山概况</div>
           </div>
         </div>
         <div>

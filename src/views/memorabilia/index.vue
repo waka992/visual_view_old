@@ -1,7 +1,7 @@
 <template>
     <div>
         <BackGround />
-        <Header title="荣誉和大事记"/>
+        <Header title="发展历程"/>
         <div class="body">
             <div id="dashboard">
                 <div class="content-title">

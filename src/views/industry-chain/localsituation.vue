@@ -1,28 +1,42 @@
 <template>
   <div>
     <BackGround />
-    <Header title="本土情况" />
+    <Header title="佛山概况" />
     <div class="body">
       <img class="bg bg2" src="~@/assets/images/trade/bg.png" />
 
       <div class="wordCloud" @click="$router.push({ path: '/corporatestyle' })">
         <FoshanMap ref="abc2" :height="'600px'" />
       </div>
-      <div class="prod-map">
-        <FoshanMapProd ref="abc" :height="'600px'" :width="'600px'" />
+
+      <div class="intro-map">
+        <div class="title">
+          <div class="text">产业布局</div>
+        </div>
+        <div class="desc">
+          <div class="prod-map">
+            <FoshanMapProd ref="abc" :height="'210px'" :width="'210px'" />
+          </div>
+        </div>
       </div>
+
       <div class="intro">
         <div class="title">
           <div class="text">概况</div>
         </div>
         <div class="desc">
-          <div v-for="(v, k) in intro" :key="k" class="item">
+          <div v-for="(v, k) in intro" :key="k" class="item item-intro">
             <div class="t1">
               <div class="t2"></div>
             </div>
             <div class="d1">
               {{ v.info }}
             </div>
+            <img
+              class="item-list-img"
+              src="/static/images/foshan-star.png"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -39,6 +53,11 @@
             <div class="d1">
               {{ v.info }}
             </div>
+            <img
+              class="item-list-img"
+              src="/static/images/foshan-star.png"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -55,6 +74,11 @@
             <div class="d1">
               {{ v.info }}
             </div>
+            <img
+              class="item-list-img"
+              src="/static/images/foshan-star.png"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -172,21 +196,44 @@ $yellow: #fec979;
 
 .intro,
 .intro-alum,
-.intro-cu {
+.intro-cu,
+.intro-map {
   position: absolute;
-  width: 300px;
+  width: 475px;
 }
 .intro {
-  top: 0;
-  left: 0;
+  height: 365px;
+  top: 51px;
+  left: 50px;
 }
 .intro-alum {
-  bottom: 0;
-  left: 0;
+  height: 484px;
+  bottom: 35px;
+  left: 50px;
 }
 .intro-cu {
-  bottom: 0;
-  right: 0;
+  height: 484px;
+  bottom: 35px;
+  right: 50px;
+}
+.intro-map {
+  height: 365px;
+  top: 51px;
+  right: 50px;
+
+  .desc {
+    height: 318px;
+  }
+
+  // 饼图
+  .prod-map {
+    width: 210px;
+    height: 210px;
+    position: absolute;
+    left: 27px;
+    top: 106px;
+    overflow: auto;
+  }
 }
 
 .title {
@@ -209,12 +256,23 @@ $yellow: #fec979;
   background: $blue;
   padding: 20px 30px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 400px;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-evenly;
+  // height: 400px;
+  .item-intro {
+    margin: 10px 0;
+  }
+  .item-list-img {
+    position: absolute;
+    top: 15px;
+    left: -18px;
+    width: 10px;
+    height: 10px;
+  }
   .item {
     flex: 1;
+    position: relative;
     .t1 {
       display: flex;
       flex-direction: row;
@@ -234,6 +292,11 @@ $yellow: #fec979;
     .d1 {
       color: $blue1;
       font-weight: bold;
+      font-size: 19px;
+      font-family: Source Han Sans CN;
+      font-weight: 400;
+      color: #addcfe;
+      line-height: 24px;
     }
   }
 }
@@ -248,23 +311,14 @@ $yellow: #fec979;
   width: 100%;
   left: 0;
 }
-.prod-map {
+
+.wordCloud {
   position: absolute;
-  right: 0;
-  top: 0;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 600px;
+  height: 500px;
 }
-
-// .wordCloud {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: flex-start;
-
-//     position: relative;
-
-//     height: 30vw;
-//     margin: 7vh 110px;
-
-//     // background: red;
-//     // opacity: 0.1;
-// }
 </style>

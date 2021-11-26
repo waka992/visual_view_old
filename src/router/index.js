@@ -115,7 +115,7 @@ export const constantRouterMap = [{
             import ('@/views/industry-chain/localsituation'),
         name: 'industrychain_localsituation',
         meta: {
-            title: '本土情况',
+            title: '佛山概况',
         },
     },
     /**

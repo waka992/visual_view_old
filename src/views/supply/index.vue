@@ -68,9 +68,13 @@
             <img src="/static/images/supply-img9.png" alt="" srcset="" />
             <div>产业链</div>
           </div>
-          <div @click="$router.push({ path: '/industrychain/trade' })" class="btn">
+          <!-- <div @click="$router.push({ path: '/industrychain/trade' })" class="btn">
             <img src="/static/images/supply-img10.png" alt="" srcset="" />
             <div>贸易关系</div>
+          </div> -->
+          <div @click="$router.push({ path: '/industrychain/localsituation' })" class="btn">
+            <img src="/static/images/supply-img10.png" alt="" srcset="" />
+            <div>佛山概况</div>
           </div>
         </div>
         <div>

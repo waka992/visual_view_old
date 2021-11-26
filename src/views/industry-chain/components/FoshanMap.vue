@@ -32,7 +32,7 @@ let option = {
 
   //绘制基本的地图
   geo: {
-    zoom: 0.3,
+    zoom: 1,
     map: "foshan",
     aspectScale: 1,
     roam: false, //是否可手势或者鼠标滚轮放大缩小
