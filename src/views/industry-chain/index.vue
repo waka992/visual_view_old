@@ -21,10 +21,10 @@
         </div>
         <div>
           <div class="title">
-            <div class="text">进口来源国家排名</div>
+            <div class="text">{{mode.index == 0 ? '铜材' : '铝土矿'}}进口来源国家排名</div>
           </div>
           <div class="desc">
-            <ReserveMap ref="abc" :height="'43vh'" />
+            <ReserveMap ref="abc" :height="'43vh'" :index="mode.index"/>
           </div>
         </div>
         <div class="btns">
@@ -43,10 +43,10 @@
         </div>
         <div>
           <div class="title">
-            <div class="text">进口量趋势图</div>
+            <div class="text">{{mode.index == 0 ? '铜矿' : '铝土矿'}}进口量趋势图</div>
           </div>
           <div class="desc">
-            <ProductionBar ref="abc1" :height="'20vh'" />
+            <ProductionBar ref="abc1" :height="'20vh'"/>
           </div>
         </div>
       </div>
