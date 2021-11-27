@@ -3,7 +3,6 @@
 </template>
 
 <script>
-let dd = console.log;
 
 import echarts from "echarts";
 require("echarts/theme/macarons"); // echarts theme

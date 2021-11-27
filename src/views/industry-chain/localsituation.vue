@@ -5,8 +5,9 @@
     <div class="body">
       <img class="bg bg2" src="~@/assets/images/trade/bg.png" />
 
-      <div class="wordCloud" @click="$router.push({ path: '/corporatestyle' })">
-        <FoshanMap ref="abc2" :height="'600px'" />
+      <div class="wordCloud">
+        <FoshanMap ref="abc2" :height="'800px'" />
+        <div class="click-area"  @click="$router.push({ path: '/corporatestyle' })"></div>
       </div>
 
       <div class="intro-map">
@@ -16,6 +17,13 @@
         <div class="desc">
           <div class="prod-map">
             <FoshanMapProd ref="abc" :height="'210px'" :width="'210px'" />
+            <div class="labels" v-for="(v, i) in foshanMapLabels" :key="i" :style="'top:'+i*30+'px;'">
+              <div
+                class="label-icon"
+                :style="'background:' + v.color + ';'"
+              ></div>
+              <div class="label-info">{{ v.info }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -105,6 +113,14 @@ export default {
     return {
       canvasHeight: 0,
       canvasWidth: 0,
+      foshanMapLabels: [
+        { info: "铝压延加工 63.45%", color: "#5470c6" },
+        { info: "铜压延加工 23.96%", color: "#91cc75" },
+        { info: "有色金属合金制造 6.84%", color: "#fac858" },
+        { info: "铜冶炼 2.82%", color: "#ee6666" },
+        { info: "其他有色金属压延加工 2.81%", color: "#73c0de" },
+        { info: "稀有稀土金属压延加工 0.12%", color: "#3ba272" }
+      ],
       intro: [
         { info: "全国有色金属产业的重要集聚区" },
         {
@@ -122,11 +138,11 @@ export default {
       introAlum: [
         {
           info:
-            "佛山南海有200多家铝型材生产企业，主要分布于大沥、官窑、狮山、罗村、丹灶等镇"
+            "佛山南海有200多家铝型材生产企业，主要分布于大沥、狮山、丹灶等镇"
         },
         {
           info:
-            "占全国市场份额的25%以上（广东省铝型材产量占全国60%左右），铝挤压材出口占全国出口的20%以上"
+            "占全国市场份额的25%以上，铝挤压材出口占全国出口的20%以上"
         },
         {
           info:
@@ -227,12 +243,37 @@ $yellow: #fec979;
 
   // 饼图
   .prod-map {
-    width: 210px;
-    height: 210px;
+    width: 365px;
+    // height: 210px;
     position: absolute;
-    left: 27px;
+    left: 10px;
     top: 106px;
-    overflow: auto;
+
+    .labels {
+      width: 300px;
+      position: absolute;
+      left: 200px;
+      top: 0;
+    }
+
+    .label-icon {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      left: 0;
+      top: 13px;
+    }
+
+    .label-info {
+      position: absolute;
+      left: 15px;
+      top: 0;
+      font-size: 15px;
+      font-family: Source Han Sans CN;
+      font-weight: 400;
+      color: #addcfe;
+      line-height: 30px;
+    }
   }
 }
 
@@ -250,6 +291,7 @@ $yellow: #fec979;
     line-height: 40px;
     font-size: 24px;
     color: #fff;
+    letter-spacing: 5px;
   }
 }
 .desc {
@@ -314,11 +356,21 @@ $yellow: #fec979;
 
 .wordCloud {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: inline-block;
-  width: 600px;
-  height: 500px;
+  width: 800px;
+  height: 800px;
+
+  .click-area {
+    position: absolute;
+    background-color: transparent;
+    width: 150px;
+    height: 150px;
+    top: 40%;
+    left: 60%;
+    z-index: 999;
+  }
 }
 </style>

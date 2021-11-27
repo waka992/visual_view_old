@@ -1,35 +1,35 @@
 <template>
     <div class="example-3d">
-        <swiper class="swiper" :options="swiperOption">
+        <swiper class="swiper" :options="swiperOption" @click-slide="jumpTo">
             <swiper-slide>
-                <img src="~@/assets/images/index/sl.png" alt="沙龙" @click="jump('trainsalon')"/>
+                <img src="~@/assets/images/index/sl.png" alt="沙龙" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/hdjy.png" alt="互动交易" @click="jump('interactive')"/>
+                <img src="~@/assets/images/index/hdjy.png" alt="互动交易" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/ryhds.png" alt="荣誉和大事记" @click="jump('memorabilia')"/>
+                <img src="~@/assets/images/index/ryhds.png" alt="荣誉和大事记" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/zs.png" alt="指数" @click="jump('platformindex')"/>
+                <img src="~@/assets/images/index/zs.png" alt="指数" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/jysj.png" alt="交易数据" @click="jump('exchangedata')"/>
+                <img src="~@/assets/images/index/jysj.png" alt="交易数据" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/cyl.png" alt="产业链" @click="jump('industrychain')"/>
+                <img src="~@/assets/images/index/cyl.png" alt="产业链" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/qyfc.png" alt="企业风采" @click="jump('corporatestyle')"/>
+                <img src="~@/assets/images/index/qyfc.png" alt="企业风采" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/hydw.png" alt="行业定位" @click="jump('industryposition')"/>
+                <img src="~@/assets/images/index/hydw.png" alt="行业定位" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/hzhb.png" alt="合作伙伴" @click="jump('friend')"/>
+                <img src="~@/assets/images/index/hzhb.png" alt="合作伙伴" />
             </swiper-slide>
-            <swiper-slide>
-                <img src="~@/assets/images/index/rlhy.png" alt="热烈欢迎" @click="jump('welcome')"/>
+            <swiper-slide  >
+                <img src="~@/assets/images/index/rlhy.png" alt="热烈欢迎"/>
             </swiper-slide>
         </swiper>
         <div class="swiper-decoration"></div>
@@ -76,8 +76,26 @@ export default {
     },
 
     methods: {
-        jump(pathData){
-            this.$router.push({path: pathData})
+        // jump(pathData){
+        //     console.log(pathData)
+        //     this.$router.push({path: pathData})
+        // },
+        jumpTo(i, reali) {
+            let path = ''
+            switch(reali) {
+                case 0: path = 'trainsalon'; break
+                case 1: path = 'interactive'; break
+                case 2: path = 'memorabilia'; break
+                case 3: path = 'platformindex'; break
+                case 4: path = 'exchangedata'; break
+                case 5: path = 'industrychain'; break
+                case 6: path = 'corporatestyle'; break
+                case 7: path = 'industryposition'; break
+                case 8: path = 'friend'; break
+                case 9: path = 'welcome'; break
+            }
+            this.$router.push({path: path})
+
         }
     }
 };

@@ -5,7 +5,7 @@
     <div class="content">
       <!-- <video-player class="vjs-custom-skin" ref="videoPlayer"
             controls :options="playerOptions" @ready="playerReadied" @play="onPlayerPlay($event)"  @ended="onPlayerEnded($event)" ></video-player> -->
-      <div class="logo-area">
+      <!-- <div class="logo-area">
         <div class="logo"></div>
         <div class="logo-text">佛山市龙汇供应链管理服务有限公司</div>
       </div>
@@ -30,7 +30,7 @@
           class="dev-arrow"
           src="/static/images/corporatestyle/btn-arrow.png"
         />
-      </div>
+      </div> -->
 
       <div
         class="item"
@@ -70,6 +70,24 @@
           <img class="pic-img" :src="pic.url" />
         </div>
       </div>
+
+      <div class="big-eight">
+        <img
+          class="top-border"
+          src="/static/images/corporatestyle/intro-border.png"
+        />
+        <div class="item-title">八大优势</div>
+        <div class="big-eight-info">
+          <div class="big-eight-info-item" v-for="(v, i) in bigEight" :key="i">
+            <img class="item-list-img" src="/static/images/foshan-star.png" />
+            {{ v.info }}
+          </div>
+        </div>
+        <img
+          class="bottom-border"
+          src="/static/images/corporatestyle/intro-border.png"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -108,6 +126,16 @@ export default {
         }
       },
       myPlayer: "",
+      bigEight: [
+        { info: "一站式的交易平台" },
+        { info: "全方位的优质服务" },
+        { info: "创新性的电子商务" },
+        { info: "专业化的信息服务" },
+        { info: "完善的交收服务" },
+        { info: "高效的流转服务" },
+        { info: "便捷的融资服务" },
+        { info: "广泛的合作模式" }
+      ],
       introList: [
         {
           title: "产业创新",
@@ -122,14 +150,14 @@ export default {
         {
           title: "持续发展",
           desc:
-            "交易平台现有铜、铝、铅、锌等交易品种，实现了有色金属现货产品高效流转。交易额从2014年421.89亿元增长到2020年3382.81亿元。交易平台发布“华南铝价”、成立广东南海有色金属产业联盟,推动产业链不断延伸，争夺行业话语权，成为华南地区有色金属企业总部的汇聚点。"
+            "交易平台实现了有色金属现货产品高效流转。交易额从2014年421.89亿元增长到2020年3382.81亿元。交易平台发布“华南铝价”、成立广东南海有色金属产业联盟,推动产业链不断延伸，争夺行业话语权，成为华南地区有色金属企业总部的汇聚点。"
         }
       ],
       picList: [
         { url: "/static/images/corporatestyle/pic-1.png" },
-        { url: "/static/images/corporatestyle/pic-2.png" },
-        { url: "/static/images/corporatestyle/pic-3.png" },
-        { url: "/static/images/corporatestyle/pic-4.png" },
+        { url: "/static/images/corporatestyle/co-3.jpg" },
+        { url: "/static/images/corporatestyle/co-2.png" },
+        { url: "/static/images/corporatestyle/co-1.jpg" },
         { url: "/static/images/corporatestyle/pic-5.png" }
       ]
     };
@@ -278,6 +306,18 @@ export default {
     left: 114px;
   }
 
+  .item-desc {
+    position: absolute;
+    top: 243px;
+    left: 30px;
+    width: 297px;
+    height: 312px;
+    font-size: 21px;
+    font-family: Source Han Sans CN;
+    font-weight: 300;
+    color: #9abcff;
+    line-height: 34px;
+  }
   .item-title {
     position: absolute;
     top: 175px;
@@ -292,30 +332,18 @@ export default {
     font-weight: 400;
     color: #e5e4eb;
     line-height: 24px;
-  }
-
-  .item-desc {
-    position: absolute;
-    top: 243px;
-    left: 30px;
-    width: 297px;
-    height: 312px;
-    font-size: 21px;
-    font-family: Source Han Sans CN;
-    font-weight: 300;
-    color: #9abcff;
-    line-height: 34px;
+    letter-spacing: 5px;
   }
 }
 
 .item0 {
-  left: 726px;
+  left: 48px;
 }
 .item1 {
-  left: 1122px;
+  left: calc(48px + 450px);
 }
 .item2 {
-  left: 1516px;
+  left: calc(48px + 450px + 450px);
 }
 
 .pic-list {
@@ -336,7 +364,7 @@ export default {
     .pic-img {
       position: absolute;
       top: 11px;
-      left: 8px;
+      left: 10px;
       display: inline-block;
       width: 215px;
       height: 167px;
@@ -360,6 +388,68 @@ export default {
 
     &.pic4 {
       left: 1449px;
+    }
+  }
+}
+// 八大优势
+.big-eight {
+  left: calc(48px + 450px + 450px + 450px);
+  top: 48px;
+  position: absolute;
+  width: 470px;
+  height: 582px;
+  overflow: hidden;
+  .top-border {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .bottom-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .item-title {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    width: 298px;
+    background-image: url("/static/images/corporatestyle/title-desc.png");
+    text-align: center;
+    height: 23px;
+    font-size: 25px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #e5e4eb;
+    line-height: 24px;
+    letter-spacing: 5px;
+  }
+  .big-eight-info {
+    position: absolute;
+    top: 110px;
+    text-align: center;
+    width: 100%;
+
+    .big-eight-info-item {
+      position: absolute;
+      left: 160px;
+      text-align: left;
+      line-height: 50px;
+      font-size: 21px;
+      font-family: Source Han Sans CN;
+      font-weight: 300;
+      color: #addcfe;
+      position: relative;
+
+      .item-list-img {
+        position: absolute;
+        top: 20px;
+        left: -30px;
+        width: 10px;
+        height: 10px;
+      }
     }
   }
 }

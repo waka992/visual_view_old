@@ -110,7 +110,9 @@
 
         data() {
             return {
-                aluminumPrice: {},
+                aluminumPrice: {
+                    change: '',
+                },
                 startPrice: [],
                 latestSpotIndex: [],
             };

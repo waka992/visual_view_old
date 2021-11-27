@@ -61,7 +61,8 @@
                         let results = {"code":1000,"msg":"success","data":{"links":{"next":"http://120.24.254.103:1001/api/v1/index/spotindex/?fields=id%2Cstatis_date%2Cindex%2Cchange%2Cchg&is_composite=true&limit=20&offset=20&ordering=-statis_date","previous":null},"count":129,"results":[{"id":33,"statis_date":"2021-11-01","diff":70},{"id":32,"statis_date":"2021-10-01","diff":-20},{"id":31,"statis_date":"2021-09-01","diff":20},{"id":30,"statis_date":"2021-08-01","diff":10},{"id":29,"statis_date":"2021-07-01","diff":60},{"id":28,"statis_date":"2021-06-01","diff":120},{"id":27,"statis_date":"2021-05-01","diff":160},{"id":26,"statis_date":"2021-04-01","diff":40},{"id":25,"statis_date":"2021-03-01","diff":-70},{"id":24,"statis_date":"2021-02-01","diff":10},{"id":23,"statis_date":"2021-01-01","diff":80},{"id":22,"statis_date":"2020-12-01","diff":-20},{"id":21,"statis_date":"2020-11-01","diff":0},{"id":20,"statis_date":"2020-10-01","diff":-60},{"id":19,"statis_date":"2020-09-01","diff":80},{"id":18,"statis_date":"2020-08-01","diff":110},{"id":17,"statis_date":"2020-07-01","diff":-60},{"id":16,"statis_date":"2020-06-01","diff":100},{"id":15,"statis_date":"2020-05-01","diff":190},{"id":14,"statis_date":"2020-04-01","diff":230},{"id":13,"statis_date":"2020-03-01","diff":30},{"id":12,"statis_date":"2020-02-01","diff":60},{"id":11,"statis_date":"2020-01-01","diff":250},{"id":10,"statis_date":"2019-12-01","diff":270},{"id":9,"statis_date":"2019-11-01","diff":60},{"id":8,"statis_date":"2019-010-01","diff":10},{"id":7,"statis_date":"2019-09-01","diff":90},{"id":6,"statis_date":"2019-08-01","diff":40},{"id":5,"statis_date":"2019-07-01","diff":30},{"id":4,"statis_date":"2019-06-01","diff":180},{"id":3,"statis_date":"2019-05-01","diff":320},{"id":2,"statis_date":"2019-04-01","diff":270},{"id":1,"statis_date":"2019-03-01","diff":90}]}}
                         let loopData = results.data.results.reverse();
                         for (let i = 0; i < loopData.length; i++) {
-                            this.xData[i] = loopData[i].statis_date.slice(-5)
+                            this.xData[i] = loopData[i].statis_date.slice(0,7)
+                            // this.xData[i] = loopData[i].statis_date.slice(-5)
                             // this.yPrice.data[i] = loopData[i].index
                             // this.yAmplitude.data[i] = loopData[i].change
                             this.yDiff.data[i] = loopData[i].diff
@@ -107,12 +108,13 @@
                         itemStyle: {
                             normal: { borderColor: "#fff", color: '#315e86', lineStyle: { color: "#fcc26f" } }
                         },
+                        
                         axisLabel: {        
                             show: true,
                             textStyle: {
                                 color: '#FEC979',
                                 fontSize: '16'
-                            }
+                            },
                         },
                         axisLine: {
                             lineStyle: {

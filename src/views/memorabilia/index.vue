@@ -87,7 +87,7 @@
                 },
         
                 selectedKey: 0,
-                selectedData: {},
+                selectedData: {atlas:{}},
                 lastProgress: 0,
                 selectedProgress: 0,
                 listData: [],
