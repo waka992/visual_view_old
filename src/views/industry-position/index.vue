@@ -21,7 +21,7 @@
                     <div class="title">政府的引导和扶持</div>
                     <div class="desc desc1">
                         <p>
-                            为推动有色金属交易平台在南海区发展壮大，充分发挥平台的集聚效应和骨干企业的龙头带动效应，促进金属加工批发行业健康发展，南海区、大沥镇两级政府通过政策扶持、鼓励创新、强化标准等，引导产业转型升级。
+                            为推动交易中心在南海区发展壮大，充分发挥交易中心的集聚效应和骨干企业的龙头带动效应，促进金属加工批发行业健康发展，南海区、大沥镇两级政府通过政策扶持、鼓励创新、强化标准等，引导产业转型升级。
                         </p>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
             <div class="grid">
                 <div class="cover icon3"></div>
                 <div class="content">
-                    <div class="title">平台的价值和效益</div>
+                    <div class="title">价值和效益</div>
                     <div class="desc desc2">
                         <p>1.提升行业竞争力</p>
                         <p>2.掌握区域定价权</p>
@@ -41,7 +41,7 @@
             <div class="grid">
                 <div class="cover icon4"></div>
                 <div class="content">
-                    <div class="title">平台愿景</div>
+                    <div class="title">展望未来</div>
                     <ul class="desc desc4">
                         <li><p>推动华南有色金属向平台化、数字化、技术化发展。</p>
                         <li><p>推动有色金属行业供应链金融的发展。</p></li>

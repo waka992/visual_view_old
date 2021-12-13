@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="title">
-            <div class="left">广东有色金属交易平台</div>
+            <div class="left">广东金属交易中心</div>
             <div class="middle">{{ title }}</div>
             <div class="right">{{ nowDate | parseTime('{y} 年 {m}月 {d}日 {h}:{i}') }}</div>
         </div>

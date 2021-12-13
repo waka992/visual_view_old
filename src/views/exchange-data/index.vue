@@ -7,7 +7,7 @@
             <div class="aside left">
                 <div>
                     <div class="aside-title">
-                        <div class="text">平台月度交易数据</div>
+                        <div class="text">月度交易数据</div>
                     </div>
                     <div class="desc" style="height: 23.5vh">
                         <AreaBasic :year="tradeYear"/>
@@ -15,7 +15,7 @@
                 </div>
                 <div>
                     <div class="aside-title" style="margin-top: 20px;">
-                        <div class="text">平台历年交易数据</div>
+                        <div class="text">年度交易数据</div>
                     </div>
                     <div class="desc" style="height: 23.5vh">
                         <BarTick />
@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <div class="aside-title" style="margin-top: 20px;">
-                        <div class="text">平台客户量</div>
+                        <div class="text">客户数量</div>
                     </div>
                     <div class="desc" style="height: 23.5vh">
                         <BarTick2 />
@@ -73,7 +73,7 @@
                         <el-row >
                             <el-col :span="12">
                                 <Pie :year="tradeYear" :type="'platform'" :height="'23vh'"/>
-                                <div style="text-align:center;margin-top:0vh;">平台占国内交易量比重</div>
+                                <div style="text-align:center;margin-top:0vh;">占国内交易量比重</div>
                             </el-col>
                             <el-col :span="12">
                                 <Pie :year="tradeYear" :type="'country'" :height="'23vh'"/>

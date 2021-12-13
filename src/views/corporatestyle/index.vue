@@ -66,6 +66,7 @@
           :class="'pic' + i"
           v-for="(pic, i) in picList"
           :key="i"
+          @click="preview(i)"
         >
           <img class="pic-img" :src="pic.url" />
         </div>
@@ -88,6 +89,15 @@
           src="/static/images/corporatestyle/intro-border.png"
         />
       </div>
+      <!-- 预览图片 -->
+      <div class="preview-box" @click="closePreview" v-if="prevFlag">
+        <div class="preview-pic">
+          <img class="preview-img" :src="previewUrl" alt="">
+        </div>
+        <!-- <div class="close">X</div> -->
+        <!-- <div class="prev"></div> -->
+        <!-- <div class="next"></div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -109,6 +119,8 @@ export default {
 
   data() {
     return {
+      prevFlag: false,
+      previewUrl: '',
       playerOptions: {
         fluid: true,
         sources: [
@@ -140,30 +152,37 @@ export default {
         {
           title: "产业创新",
           desc:
-            "2014年，在区、镇两级政府的大力支持下，龙汇供应链公司与广州商品交易所共同打造的广东有色金属交易平台正式投入使用，旨在重塑大沥产业结构，助力产业升级。交易平台为会员提供交易服务、结算服务、交收服务、信息服务及其他创新服务。"
+            "2014年，在区、镇两级政府的大力支持下，广东有色金属交易平台（后更名为“广东金属交易中心”）正式成立，旨在重塑大沥产业结构，助力产业升级。交易中心为会员提供交易服务、结算服务、交收服务、信息服务及其他创新服务。"
         },
         {
           title: "产业集聚",
           desc:
-            "交易平台在广佛国际商贸中心区的龙汇大厦落实，吸引越来越多有色金属上下游企业汇聚于此，助力有色金属产业经济迈上新征程。广东有色金属交易平台会员数量从2014年160家增加到2020年超4000家，会员遍布全国各地。"
+            "交易中心在广佛国际商贸中心区的龙汇大厦落实，吸引越来越多有色金属上下游企业汇聚于此，助力有色金属产业经济迈上新征程。广东金属交易中心会员数量从2014年160家增加到2020年超4000家，会员遍布全国各地。"
         },
         {
           title: "持续发展",
           desc:
-            "交易平台实现了有色金属现货产品高效流转。交易额从2014年421.89亿元增长到2020年3382.81亿元。交易平台发布“华南铝价”、成立广东南海有色金属产业联盟,推动产业链不断延伸，争夺行业话语权，成为华南地区有色金属企业总部的汇聚点。"
+            "交易中心实现了有色金属现货产品高效流转。交易额从2014年421.89亿元增长到2020年3382.81亿元。交易中心发布“华南铝价”、成立广东南海有色金属产业联盟,推动产业链不断延伸，争夺行业话语权，成为华南地区有色金属企业总部的汇聚点。"
         }
       ],
       picList: [
-        { url: "/static/images/corporatestyle/pic-1.png" },
-        { url: "/static/images/corporatestyle/co-3.jpg" },
-        { url: "/static/images/corporatestyle/co-2.png" },
-        { url: "/static/images/corporatestyle/co-1.jpg" },
-        { url: "/static/images/corporatestyle/pic-5.png" }
+        { url: "/static/images/corporatestyle/pic-1.png", hdurl: '/static/images/corporatestyle/pic-1-hd.jpg'},
+        { url: "/static/images/corporatestyle/co-3.jpg", hdurl: '/static/images/corporatestyle/co-3-hd.jpg'},
+        { url: "/static/images/corporatestyle/co-2.png", hdurl: '/static/images/corporatestyle/co-2-hd.jpg'},
+        { url: "/static/images/corporatestyle/co-1.jpg", hdurl: '/static/images/corporatestyle/co-1-hd.png'},
+        { url: "/static/images/corporatestyle/pic-5.png", hdurl: '/static/images/corporatestyle/pic-5-hd.jpg'}
       ]
     };
   },
 
   methods: {
+    preview(i) {
+      this.previewUrl = this.picList[i].hdurl
+      this.prevFlag = true
+    },
+    closePreview() {
+      this.prevFlag = false
+    },
     // 视频加载完成回调
     playerReadied(e) {
       this.myPlayer = e;
@@ -193,6 +212,32 @@ export default {
   padding: 49px 47px;
   background-image: url("/static/images/corporatestyle/bg.png");
   position: relative;
+}
+// 预览图片
+.preview-box {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+
+  .preview-pic {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1044px;
+    height: 756px;
+    background-color: #fff;
+
+    .preview-img {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 
 .logo-area {
