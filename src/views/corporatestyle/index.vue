@@ -351,8 +351,8 @@ export default {
   position: absolute;
   top: 48px;
   display: inline-block;
-  width: 357px;
-  height: 582px;
+  width: 592px;
+  height: 452px;
   background-image: url("/static/images/corporatestyle/info-border.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -361,57 +361,69 @@ export default {
     width: 124px;
     height: 124px;
     position: absolute;
-    top: 28px;
-    left: 114px;
+    top: 37px;
+    left: 45px;
   }
 
   .item-desc {
     position: absolute;
-    top: 243px;
-    left: 30px;
-    width: 297px;
-    height: 312px;
+    top: 196px;
+    left: 61px;
+    width: 472px;
+    height: 212px;
     font-size: 21px;
     font-family: Source Han Sans CN;
     font-weight: 300;
     color: #9abcff;
     line-height: 34px;
+    letter-spacing: 2px;
   }
   .item-title {
     position: absolute;
-    top: 175px;
-    left: 30px;
+    top: 79px;
+    left: 218px;
     display: inline-block;
-    width: 298px;
+    width: 300px;
     background-image: url("/static/images/corporatestyle/title-desc.png");
+    background-repeat: no-repeat;
     text-align: center;
-    height: 23px;
+    height: 40px;
+    line-height: 36px;
     font-size: 25px;
     font-family: Source Han Sans CN;
     font-weight: 400;
     color: #e5e4eb;
-    line-height: 24px;
     letter-spacing: 5px;
   }
 }
 
 .item0 {
-  left: 48px;
+  left: 44px;
 }
 .item1 {
-  left: calc(48px + 450px);
+  left: 670px;
 }
 .item2 {
-  left: calc(48px + 450px + 450px);
+  left: 1290px;
 }
 
 .pic-list {
   position: absolute;
   top: 665px;
   left: 48px;
-  width: 1824px;
-  height: 274px;
+  width: 1210px;
+  height: 417px;
   background-image: url("/static/images/corporatestyle/pics-border.png");
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:linear-gradient(to right, transparent, #02071e3f)
+  }
 
   .pics {
     position: absolute;
@@ -419,6 +431,7 @@ export default {
     width: 232px;
     height: 186px;
     background-image: url("/static/images/corporatestyle/pic-border.png");
+    z-index: 100;
 
     .pic-img {
       position: absolute;
