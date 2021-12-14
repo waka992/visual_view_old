@@ -91,8 +91,7 @@
       </div>
       <!-- 预览图片 -->
       <div class="preview-box" @click="closePreview" v-if="prevFlag">
-        <div class="preview-pic">
-          <img class="preview-img" :src="previewUrl" alt="">
+        <div class="preview-pic" ref="imgArea">
         </div>
         <!-- <div class="close">X</div> -->
         <!-- <div class="prev"></div> -->
@@ -120,7 +119,7 @@ export default {
   data() {
     return {
       prevFlag: false,
-      previewUrl: '',
+      previewArr: [],
       playerOptions: {
         fluid: true,
         sources: [
@@ -177,11 +176,23 @@ export default {
 
   methods: {
     preview(i) {
-      this.previewUrl = this.picList[i].hdurl
       this.prevFlag = true
+      this.$nextTick(() => {
+        this.$refs.imgArea.appendChild(this.previewArr[i])
+      })
     },
     closePreview() {
       this.prevFlag = false
+    },
+    preload(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        let img = new Image()
+        img.src = arr[i].hdurl
+        img.style.display = 'inline-block'
+        img.style.width = '100%'
+        img.style.height = '100%'
+        this.previewArr[i] = img
+      }
     },
     // 视频加载完成回调
     playerReadied(e) {
@@ -200,6 +211,9 @@ export default {
       this.myPlayer.requestFullscreen();
       this.myPlayer.exitFullscreen();
     }
+  },
+  mounted() {
+    this.preload(this.picList)
   }
 };
 </script>
@@ -232,7 +246,7 @@ export default {
     height: 756px;
     background-color: #fff;
 
-    .preview-img {
+    img {
       display: inline-block;
       width: 100%;
       height: 100%;
