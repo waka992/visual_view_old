@@ -70,13 +70,10 @@
         >
           <img class="pic-img" :src="pic.url" />
         </div>
+        <div class="item-title"  @click="$router.push({ path: '/memorabilia' })">发展历程</div>
       </div>
 
-      <div class="big-eight">
-        <img
-          class="top-border"
-          src="/static/images/corporatestyle/intro-border.png"
-        />
+      <div class="big-eight" @click="$router.push({ path: '/corporatestyle/bigeight' })">
         <div class="item-title">八大优势</div>
         <div class="big-eight-info">
           <div class="big-eight-info-item" v-for="(v, i) in bigEight" :key="i">
@@ -84,10 +81,7 @@
             {{ v.info }}
           </div>
         </div>
-        <img
-          class="bottom-border"
-          src="/static/images/corporatestyle/intro-border.png"
-        />
+      
       </div>
       <!-- 预览图片 -->
       <div class="preview-box" @click="closePreview" v-if="prevFlag">
@@ -226,6 +220,18 @@ export default {
   padding: 49px 47px;
   background-image: url("/static/images/corporatestyle/bg.png");
   position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 60%;
+    width: 100%;
+    transform: translateX(-63%);
+    height: 100%;
+    background-image: url("/static/images/corporatestyle/light.png");
+    background-repeat: no-repeat;
+    opacity: 0.6;
+  }
 }
 // 预览图片
 .preview-box {
@@ -409,11 +415,34 @@ export default {
 
 .pic-list {
   position: absolute;
-  top: 665px;
-  left: 48px;
+  top: 525px;
+  left: 665px;
   width: 1210px;
   height: 417px;
   background-image: url("/static/images/corporatestyle/pics-border.png");
+  background-repeat: no-repeat;
+  overflow: hidden;
+  z-index: 99;
+
+  .item-title {
+    position: absolute;
+    top: 44px;
+    left: 780px;
+    display: inline-block;
+    width: 388px;
+    background-image: url("/static/images/corporatestyle/title-arrow2.png");
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 98px;
+    font-size: 25px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #fff;
+    line-height: 98px;
+    letter-spacing: 5px;
+    z-index: 99;
+  }
+
 
   &::after {
     content: '';
@@ -443,19 +472,27 @@ export default {
     }
 
     &.pic0 {
-      left: 165px;
+      left: 57px;
+      top: 37px;
+      z-index: 10;
     }
 
     &.pic1 {
-      left: 489px;
+      left: 280px;
+      top: 193px;
+      z-index: 9;
     }
 
     &.pic2 {
-      left: 813px;
+      left: 496px;
+      top: 37px;
+      z-index: 8;
     }
 
     &.pic3 {
-      left: 1130px;
+      left: 711px;
+      top: 193px;
+      z-index: 7;
     }
 
     &.pic4 {
@@ -465,48 +502,44 @@ export default {
 }
 // 八大优势
 .big-eight {
-  left: calc(48px + 450px + 450px + 450px);
-  top: 48px;
+  left: 50px;
+  top: 527px;
   position: absolute;
-  width: 470px;
-  height: 582px;
+  width: 587px;
+  height: 415px;
   overflow: hidden;
-  .top-border {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  .bottom-border {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
+  background-image: url("/static/images/corporatestyle/big-eight-border.png");
+  z-index: 99;
+
   .item-title {
     position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 3px;
+    left: 3px;
     display: inline-block;
-    width: 298px;
-    background-image: url("/static/images/corporatestyle/title-desc.png");
+    width: 587px;
+    background-image: url("/static/images/corporatestyle/title-arrow.png");
+    background-repeat: no-repeat;
     text-align: center;
-    height: 23px;
+    height: 98px;
     font-size: 25px;
     font-family: Source Han Sans CN;
     font-weight: 400;
     color: #e5e4eb;
-    line-height: 24px;
+    line-height: 98px;
     letter-spacing: 5px;
   }
   .big-eight-info {
     position: absolute;
-    top: 110px;
+    top: 139px;
     text-align: center;
     width: 100%;
 
     .big-eight-info-item {
-      position: absolute;
-      left: 160px;
+      display: inline-block;
+      width: 293px;
+      text-indent: 73px;
+      letter-spacing: 2px;
+      // position: absolute;
       text-align: left;
       line-height: 50px;
       font-size: 21px;
@@ -517,10 +550,10 @@ export default {
 
       .item-list-img {
         position: absolute;
-        top: 20px;
-        left: -30px;
-        width: 10px;
-        height: 10px;
+        top: 18px;
+        left: 46px;
+        width: 18px;
+        height: 18px;
       }
     }
   }

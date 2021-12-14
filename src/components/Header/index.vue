@@ -78,6 +78,7 @@
                 // padding: 10vw;
                 margin-bottom: 1.5vh;
                 font-size: 35px;
+                letter-spacing: 5px;
                 text-align:center;
             }
             .right {

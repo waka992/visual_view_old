@@ -208,6 +208,18 @@ export const constantRouterMap = [{
             title: '企业风采',
         },
     },
+    /**
+     * 八大优势
+     */
+    {
+        path: '/corporatestyle/bigeight',
+        component: () =>
+            import ('@/views/corporatestyle/bigeight'),
+        name: 'bigeight',
+        meta: {
+            title: '八大优势',
+        },
+    },
 
     /**
      * 欢迎
