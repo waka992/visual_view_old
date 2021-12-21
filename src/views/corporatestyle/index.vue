@@ -220,17 +220,19 @@ export default {
   padding: 49px 47px;
   background-image: url("/static/images/corporatestyle/bg.png");
   position: relative;
+  user-select: none;
 
   &::after {
     content: '';
     position: absolute;
     left: 60%;
+    bottom: 0;
     width: 100%;
     transform: translateX(-63%);
     height: 100%;
     background-image: url("/static/images/corporatestyle/light.png");
     background-repeat: no-repeat;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 }
 // 预览图片
