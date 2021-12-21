@@ -418,7 +418,7 @@ export default {
 .pic-list {
   position: absolute;
   top: 525px;
-  left: 665px;
+  left: 670px;
   width: 1210px;
   height: 417px;
   background-image: url("/static/images/corporatestyle/pics-border.png");
