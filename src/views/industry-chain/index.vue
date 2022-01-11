@@ -5,7 +5,7 @@
 
     <div class="body">
       <div class="one">
-        <WorldMap ref="abc2" :height="'80vh'" />
+        <WorldMap ref="abc2" :height="'70vh'" />
       </div>
       <div class="one2">
         <div class="pos">
@@ -47,6 +47,16 @@
           </div>
           <div class="desc">
             <ProductionBar ref="abc1" :height="'20vh'"/>
+          </div>
+        </div>
+      </div>
+      <div class="one3">
+        <div>
+          <div class="title">
+            <div class="text">我国铜铝在全球地位</div>
+          </div>
+          <div class="desc">
+            <ProductionBar ref="importpercent" :height="'20vh'"/>
           </div>
         </div>
       </div>
@@ -112,6 +122,7 @@ export default {
       this.get_sort(v.val);
       this.get_trend(v.val);
       this.get_fly(v.val);
+      this.getImport(v.val)
     },
     // 获取排名
     get_sort(mode = 1) {
@@ -322,7 +333,7 @@ export default {
           axisLine: {
             lineStyle: {
               width: 2,
-              color: "#E6D90C",
+              color: "#addcfe",
             },
           },
           data: ["2月", "3月", "4月", "5月", "6月", "7月", "8月"],
@@ -333,7 +344,7 @@ export default {
           nameLocation: "end",
           nameTextStyle: {
             // 坐标轴名称样式
-            color: "#E6D90C",
+            color: "#addcfe",
             padding: [5, 0, 0, 5], // 坐标轴名称相对位置
           },
           nameGap: 10, // 坐标轴名称与轴线之间的距离
@@ -344,7 +355,7 @@ export default {
           axisLine: {
             lineStyle: {
               width: 2,
-              color: "#E6D90C",
+              color: "#addcfe",
             },
           },
           splitLine: {
@@ -372,7 +383,10 @@ export default {
             barWidth: "20%",
             data: [1000, 5200, 2000, 3340, 3900, 3300, 2200],
             itemStyle: {
-              normal: { color: "#E6D90C" },
+              normal: { color: (params) =>  {
+                  let colorArr = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
+                  return colorArr[params.dataIndex]
+              } },
             },
           },
         ],
@@ -400,6 +414,8 @@ export default {
             option.xAxis.data.unshift(name);
             option.series[0].data.unshift(value);
           });
+
+          option.xAxis.data[4] = '2021 01-11' // 暂时没有12月数据
 
           this.$refs.abc1.updateChart(option);
         });
@@ -505,7 +521,7 @@ export default {
           // 铝
           let data = []
           if (mode === 2) {
-            data = [{"id":6,"longitude_start":19.015908,"latitude_start":52.800932,"longitude_end":115.27226,"latitude_end":38.635842},{"id":7,"longitude_start":-10.051821,"latitude_start":10.442355,"longitude_end":115.27226,"latitude_end":38.635842},{"id":8,"longitude_start":117.165486,"latitude_start":0.138001,"longitude_end":115.27226,"latitude_end":38.635842}]
+            data = [{"id":6,"longitude_start":134.846984,"latitude_start":-25.431389,"longitude_end":115.27226,"latitude_end":38.635842},{"id":7,"longitude_start":-10.051821,"latitude_start":10.442355,"longitude_end":115.27226,"latitude_end":38.635842},{"id":8,"longitude_start":117.165486,"latitude_start":0.138001,"longitude_end":115.27226,"latitude_end":38.635842}]
           }
           else {
             // data = e.data.results;
@@ -547,6 +563,141 @@ export default {
           this.$refs.abc2.updateChart(option);
         });
     },
+    // 铜铝进口占比
+    getImport(mode = 1) {
+      let option = {
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            // 坐标轴指示器，坐标轴触发有效
+            type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
+          },
+        },
+        textStyle: {
+          fontStyle: {
+            color: "#fcc26f",
+          },
+        },
+        xAxis: {
+          type: "category",
+          axisTick: {
+            inside: true,
+            length: 0,
+            alignWithLabel: true,
+          },
+          axisLine: {
+            lineStyle: {
+              width: 2,
+              color: "#addcfe",
+            },
+          },
+          data: ["2月", "3月", "4月", "5月", "6月", "7月", "8月"],
+        },
+        yAxis: {
+          show: true,
+          name: "百分比 % ",
+          nameLocation: "end",
+          nameTextStyle: {
+            // 坐标轴名称样式
+            color: "#addcfe",
+            padding: [5, 0, 0, 5], // 坐标轴名称相对位置
+          },
+          nameGap: 10, // 坐标轴名称与轴线之间的距离
+          axisTick: {
+            inside: true,
+            length: 0,
+          },
+          axisLine: {
+            lineStyle: {
+              width: 2,
+              color: "#addcfe",
+            },
+          },
+          splitLine: {
+            show: false,
+            lineStyle: {
+              type: "dashed",
+              color: "#1e95f0",
+            },
+          },
+          type: "value",
+        },
+        grid: {
+          left: 50,
+          right: 10,
+          top: 20,
+          bottom: 20,
+          show: true,
+          borderColor: "transparent",
+          backgroundColor: "rgba(63,28,85,0.2)",
+        },
+        label: {
+          color: '#addcfe'
+        },
+        series: [
+          {
+            name: "铜",
+            type: "bar",
+            barWidth: "20%",
+            data: [1000, 5200, 2000, 3340, 3900, 3300, 2200],
+            itemStyle: {
+              normal: { 
+                color: {
+                  type: "linear",
+                  x: 0,
+                  y: 0,
+                  x2: 0,
+                  y2: 1,
+                  colorStops: [
+                    {
+                      offset: 0,
+                      color: "#66b1ea", // 0% 处的颜色
+                    },
+                    {
+                      offset: 1,
+                      color: "#addcfe", // 100% 处的颜色
+                    },
+                  ],
+                },
+               },
+            },
+          },
+          {
+            name: "铜",
+            type: "bar",
+            barWidth: "20%",
+            data: [1000, 5200, 2000, 3340, 3900, 3300, 2200],
+            itemStyle: {
+              normal: { 
+                color: {
+                  type: "linear",
+                  x: 0,
+                  y: 0,
+                  x2: 0,
+                  y2: 1,
+                  colorStops: [
+                    {
+                      offset: 0,
+                      color: "#66b1ea", // 0% 处的颜色
+                    },
+                    {
+                      offset: 1,
+                      color: "#addcfe", // 100% 处的颜色
+                    },
+                  ],
+                },
+               },
+            },
+          },
+        ],
+      };
+      option.xAxis.data = [];
+      option.series[0].data = [];
+      option.xAxis.data = ['矿储量占比','矿产量占比','电解铜/铝产量占比','电解铜/铝消费占比']
+      option.series[0].data = [3,8,42,59]
+      option.series[1].data = [3,20,57,53]
+      this.$refs.importpercent.updateChart(option);
+    }
   },
 };
 </script>
@@ -568,6 +719,7 @@ $yellow: #fec979;
   display: flex;
   flex-direction: row;
   color: $white;
+  position: relative;
 
   .title {
     // border-left: 5px solid $yellow;
@@ -589,7 +741,7 @@ $yellow: #fec979;
     width: 70vw;
     margin-right: 20px;
   }
-  .one2 {
+  .one2,.one3 {
     position: relative;
     width: 30vw;
     .desc {
@@ -649,6 +801,12 @@ $yellow: #fec979;
         border: 2px solid $yellow;
       }
     }
+  }
+
+  .one3 {
+    position: absolute;
+    bottom: 0;
+    right: 31vw;
   }
 }
 </style>

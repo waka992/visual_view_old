@@ -44,6 +44,14 @@ let option = {
     {
       type: "bar",
       barWidth: "30%",
+      label: {
+        show: true,
+        position: 'right',
+        color: '#6EBAEE',
+        formatter: (e) => {
+          return e.data.value + '万吨'
+        }
+      },
       data: [
         {
           value: 400,
@@ -79,7 +87,6 @@ let option = {
         {
           value: 0,
           name: "中国",
-        
         },
       ],
       roseType: "radius",
@@ -90,6 +97,10 @@ let option = {
       },
       label: {
         color: "#6EBAEE",
+        // formatter: (e) => {
+        //   console.log(e)
+        //   return e.data.name + ' ' +e.data.value
+        // }
       },
       labelLine: {
         lineStyle: {

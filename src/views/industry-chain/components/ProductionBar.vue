@@ -74,12 +74,18 @@ let option = {
     borderColor: "transparent",
     backgroundColor: "rgba(63,28,85,0.2)",
   },
+  label: {
+    show: true,
+    position: 'top',
+    color: '#E6D90C'
+  },
   series: [
     {
       name: "铜",
       type: "bar",
       barWidth: "20%",
       data: [1000, 5200, 2000, 3340, 3900, 3300, 2200],
+     
       itemStyle: {
         normal: { color: "#E6D90C" },
       },

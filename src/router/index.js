@@ -220,7 +220,30 @@ export const constantRouterMap = [{
             title: '八大优势',
         },
     },
-
+    /**
+     * 农产品需求
+     */
+    {
+        path: '/agriculture/supply',
+        component: () =>
+            import ('@/views/agriculture/supply'),
+        name: 'agriculturesupply',
+        meta: {
+            title: '农产品需求',
+        },
+    },
+    /**
+     * 农产品供应
+     */
+    {
+        path: '/agricultureChain',
+        component: () =>
+            import ('@/views/agriculture/industryChain'),
+        name: 'agricultureChain',
+        meta: {
+            title: '农产品供应链',
+        },
+    },
     /**
      * 欢迎
      */
