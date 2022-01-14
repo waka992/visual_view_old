@@ -68,6 +68,14 @@
             />
           </div>
         </div>
+        <div class="chart">
+          <div class="chart-title3">
+            铜材产量
+          </div>
+          <div class="chart3">
+            <IndustrySituation ref="situationChart3" :height="'210px'" :width="'235px'" />
+          </div>
+        </div>
       </div>
 
       <div class="intro-alum">
@@ -89,6 +97,17 @@
             />
           </div>
         </div>
+        <div class="chart">
+          <div class="chart-title">
+            铝型材消费
+          </div>
+          <div class="chart-left">
+              <IndustrySituation ref="situationChart1" :height="'210px'" :width="'235px'" />
+          </div>
+          <div class="chart-right">
+              <IndustrySituation ref="situationChart2" :height="'210px'" :width="'235px'" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -99,14 +118,16 @@ import Header from "@/components/Header";
 import BackGround from "@/components/BackGround2";
 import FoshanMap from "./components/FoshanMap";
 import FoshanMapProd from "./components/FoshanMapProd";
+import IndustrySituation from "./components/IndustrySituation";
 
 export default {
-  name: "Resource",
+  name: "LocalSituation",
   components: {
     Header,
     BackGround,
     FoshanMap,
-    FoshanMapProd
+    FoshanMapProd,
+    IndustrySituation,
   },
 
   data() {
@@ -148,10 +169,6 @@ export default {
           info:
             "佛山铝产业产值占全市有色金属行业产值的60%以上，从业人员约5万人。"
         },
-        {
-          info:
-            "铝型材占铝加工品中的60%，而佛山地区的消费占铝型材总消费中的40%，佛山地区的铝消费排名全球第二，南海地区占佛山铝型材消费的90%。"
-        },
         { info: "全国“建筑铝型材20强”中，南海占了11家；" },
         { info: "全国“工业型材10强”中，南海占了4家。" },
         { info: "南海区大沥镇被誉为“中国铝材第一镇”、中国有色金属名镇”。" }
@@ -163,11 +180,11 @@ export default {
         },
         {
           info:
-            "佛山全市铜行业企业大部分集中在铜线、管及零部件加工，为下游家电（冰箱、空调等）、电子等行业服务。（下游重点行业信息：顺德北滘，中国家电制造业重镇，2020年，北滘家电产业产值约2709亿元，占据了全国家电业总产值十分之一）"
+            "佛山全市铜行业企业大部分集中在铜线、管及零部件加工，为下游家电（冰箱、空调等）、电子等行业服务。（重点行业信息：顺德北滘，中国家电制造业重镇，2020年北滘家电产业产值约2709亿元，占据全国家电业总产值十分之一）"
         },
         {
           info:
-            "2019年，全市铜材产量约为60万吨，占广东省铜材产量（254万吨）的约1/4；铜产业的产值为312.8亿元，占全市有色产业产值的26.8%以上。其中，铜冶炼、压延加工的产值分别为32.9亿元、279.9亿元，分别占全市有色产业产值的2.8%、24.0%。"
+            "2019年，全市铜材产量约为60万吨；铜产业的产值为312.8亿元，占全市有色产业产值的26.8%以上。其中，铜冶炼、压延加工的产值分别为32.9亿元、279.9亿元，分别占全市有色产业产值的2.8%、24.0%。"
         }
       ]
     };
@@ -179,9 +196,78 @@ export default {
     var dom = document.getElementsByClassName("wordCloud");
     this.canvasHeight = dom[0].offsetHeight;
     this.canvasWidth = dom[0].offsetWidth;
+    this.setSituationChart()
   },
 
-  methods: {}
+  methods: {
+    setSituationChart() {
+      let option = {
+        color: ['#91cc75' ,'#fac858'],
+        title: {
+        },
+        series: [
+          {
+            center: ["50%", "54%"],
+            data: [
+              {
+                value: 60,
+                name: "全国其他",
+              },
+              {
+                value: 40,
+                name: "佛山",
+              },
+            ]
+          }
+        ]
+      }
+      let option2 = {
+        color:['#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'],
+        title: {
+          text: ''
+        },
+        series: [
+          {
+            center: ["50%", "54%"],
+            data: [
+              {
+                value: 90,
+                name: "南海",
+              },
+              {
+                value: 10,
+                name: "佛山其他",
+              },
+            ]
+          }
+        ]
+      }
+      let option3 = {
+        color:['#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'],
+        title: {
+          text: ''
+        },
+        series: [
+          {
+            center: ["50%", "36%"],
+            data: [
+              {
+                value: 25,
+                name: "佛山",
+              },
+              {
+                value: 75,
+                name: "广东其他",
+              },
+            ]
+          }
+        ]
+      }
+      this.$refs.situationChart1.updateChart(option)
+      this.$refs.situationChart2.updateChart(option2)
+      this.$refs.situationChart3.updateChart(option3) // 铜
+    }
+  }
 };
 </script>
 
@@ -216,29 +302,45 @@ $yellow: #fec979;
 .intro-map {
   position: absolute;
   width: 475px;
+  overflow: hidden;
 }
 .intro {
-  height: 365px;
-  top: 51px;
+  height: 385px;
+  top: 20px;
   left: 50px;
 }
 .intro-alum {
-  height: 484px;
-  bottom: 35px;
+  height: 560px;
+  top: 390px;
   left: 50px;
 }
 .intro-cu {
-  height: 484px;
-  bottom: 35px;
+  height: 560px;
+  top: 390px;
   right: 50px;
+  
+  .desc {
+    .item {
+      .d1 {
+        line-height: 26px;
+      }
+    }
+  }
 }
+
+.intro {
+  .desc {
+    height: 308px;
+  }
+}
+
 .intro-map {
   height: 365px;
-  top: 51px;
+  top: 20px;
   right: 50px;
 
   .desc {
-    height: 318px;
+    height: 308px;
   }
 
   // 饼图
@@ -276,6 +378,45 @@ $yellow: #fec979;
     }
   }
 }
+.chart {
+  height: 210px;
+  background: $blue;
+  position: relative;
+  text-align: center;
+}
+.chart3 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.chart-title {
+  position: absolute;
+  top: 18px;
+  width: 100%;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.chart-title3 {
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+  padding-left: 80px;
+  margin-right: -20px;
+  margin-top: -60px;
+}
+
+.chart-left,.chart-right {
+  display: inline-block;
+  width: 235px;
+}
 
 .title {
   // border-left: 5px solid $yellow;
@@ -296,7 +437,7 @@ $yellow: #fec979;
 }
 .desc {
   background: $blue;
-  padding: 20px 30px;
+  padding: 10px 30px;
   box-sizing: border-box;
   // display: flex;
   // flex-direction: column;

@@ -23,7 +23,7 @@
       <div class="one1">
         <div>
           <div class="title">
-            <div class="text">供需关系</div>
+            <div class="text">供需平衡</div>
           </div>
           <div>
             <div class="chart-wrapper">
@@ -33,11 +33,11 @@
         </div>
         <div class="mt1">
           <div class="title">
-            <div class="text">库存</div>
+            <div class="text">行业占比</div>
           </div>
           <div>
             <div class="chart-wrapper">
-              <ProductionBar ref="abc1" :height="'35vh'" />
+              <ReserveMap ref="abc1" :height="'35vh'" :index="type_val"/>
             </div>
           </div>
         </div>
@@ -106,6 +106,7 @@ import Header from "@/components/Header";
 
 import ProductionBar from "./components/ProductionBar";
 import SupplyLine from "./components/SupplyLine";
+import ReserveMap from "@/views/industry-chain/components/ReserveMap";
 
 export default {
   name: "index",
@@ -114,6 +115,7 @@ export default {
     Header,
     ProductionBar,
     BackGround,
+    ReserveMap
   },
   data() {
     return {
@@ -189,7 +191,7 @@ export default {
     this.get_downstreamindustry(this.type_val);
     this.get_manufacturingenterprise(this.type_val);
     this.get_supply(this.type_val);
-    this.get_stoage(this.type_val);
+    this.get_industry(this.type_val);
   },
   methods: {
     // 获取下游企业
@@ -209,19 +211,19 @@ export default {
                 {
                   title: "建筑业",
                   desc:
-                    "建筑业是我国铝材最大的下游应用领域，占比达到33%。建筑安装业作为建筑物内各种设备的安装活动以及施工中的线路敷设和管道安装活动，建筑业的发展必然也带来了建筑安装的相关需求。",
+                    "建筑业是我国铝材最大的下游应用领域，占比达到32%。建筑安装业作为建筑物内各种设备的安装活动以及施工中的线路敷设和管道安装活动，建筑业的发展必然也带来了建筑安装的相关需求。",
                   img: "/static/images/supply-img2.png",
                 },
                 {
-                  title: "运输业",
+                  title: "电子电力",
                   desc:
-                    "铝型材在交通运输业的应用极为广泛，汽车制造是工业铝型材的主要应用领域之一，而铝的应用在轨道交通发展上也发挥了重要角色。铝合金材料则是汽车轻量化目标的主要应用材料。2020年，汽车产销2522.5万辆和2531.1万辆，同比下降2.0%和1.9%，与上年相比，分别收窄5.5个百分点和6.3个百分点。",
+                   "电力电子：由于铝良好导电性能和密度低、质量轻的特性，在电力行业中用于制造电线电缆、母线及导体及其它输配电设备等，同时是计算机、通讯设备、个人电子消费品等重要电子产品领域的原材料。",
                   img: "/static/images/supply-img4.png",
                 },
                 {
-                  title: "包装行业",
+                  title: "交通运输",
                   desc:
-                    "铝箔是铝加工材产业中附加值较高的细分产品，行业发展迅速，市场规模与产销量连年保持高速增长，由于其在导热、循环利用领域优异的应用性能，使得铝箔在家电、包装等方面的应用得到极大拓展。",
+                    "铝型材在交通运输业的应用极为广泛，汽车制造是工业铝型材的主要应用领域之一，而铝的应用在轨道交通发展上也发挥了重要角色。铝合金材料则是汽车轻量化目标的主要应用材料。2020年，汽车产销2522.5万辆和2531.1万辆，同比下降2.0%和1.9%，与上年相比，分别收窄5.5个百分点和6.3个百分点。",
                   img: "/static/images/supply-img11.png",
                 },
             ]
@@ -262,7 +264,7 @@ export default {
                     title: "中国铝业",
                     num: "产量: 369万吨",
                     desc:
-                      "中国铝业股份有限公司是中央管理的国有重要骨干企业，从事矿产资源开发、有色金属冶炼加工、相关贸易及工程技术服务等，是全球第二大氧化铝供应商、第三大电解铝供应商和第五大铝加工材供应商，同业综合实力位居全国第一。",
+                      "中国铝业股份有限公司是中央管理的国有重要骨干企业，从事矿产资源开发、有色金属冶炼加工、相关贸易及工程技术服务等，同业综合实力位居全国第一。",
                     img: "/static/images/supply-img13.png",
                   },
                
@@ -317,10 +319,10 @@ export default {
         //   right: 140,
         // },
         legend: {
-          data: ["消费量", "生产量"],
           textStyle: {
             color: "#2a71b5",
           },
+          show: true,
         },
         xAxis: {
           type: "category",
@@ -342,7 +344,7 @@ export default {
             show: true,
             color: "#E6D90C",
           },
-          splitLine: { show: false },
+          splitLine: { show: true, lineStyle: {type: 'dashed'} },
           // minorSplitLine: { show: false },
           // splitArea: { show: false },
         },
@@ -356,211 +358,207 @@ export default {
             itemStyle: {
               color: "#E20A3C",
             },
-            name: "消费量",
+            name: "年度缺口",
             showSymbol: false,
           },
-          {
-            data: [100, 100, 100, 100, 100, 150, 230, 224, 218, 135, 147, 260],
-            type: "line",
-            itemStyle: {
-              color: "#E1B738",
-            },
-            name: "生产量",
-            showSymbol: false,
-          },
+          // {
+          //   data: [100, 100, 100, 100, 100, 150, 230, 224, 218, 135, 147, 260],
+          //   type: "line",
+          //   itemStyle: {
+          //     color: "#E1B738",
+          //   },
+          //   name: "生产量",
+          //   showSymbol: false,
+          // },
         ],
       };
-
-      supply
-        .consumption({
-          fields: "id,statis_date,amount",
-          ordering: "-statis_date",
-          commodity: 1,
-          limit: 10,
-        })
-        .then((e) => {
-          if (e.code != 1000) {
-            return;
-          }
-          let data = {}
-          if (mode === 2) {
-            data = [{"id":3,"statis_date":"202109","amount":346.1},{"id":4,"statis_date":"202108","amount":351.8},{"id":5,"statis_date":"202107","amount":359.2},{"id":6,"statis_date":"202106","amount":339.6},{"id":7,"statis_date":"202105","amount":321},{"id":8,"statis_date":"202104","amount":308.5},{"id":9,"statis_date":"202103","amount":293.1},{"id":10,"statis_date":"202102","amount":285.1},{"id":11,"statis_date":"202101","amount":296.5}]
-          }
-          else {
-            data = e.data.results
-          }
-            data = data.reverse();
-            option.xAxis.data = [];
-            option.series[0].data = [];
-  
+        let data = [
+           ]
+           if (this.type_val == 1) {
+             data = [
+                {"id":1,"statis_date":"2006","amount": 27.80 },
+                {"id":2,"statis_date":"2007","amount": -11.90 },
+                {"id":3,"statis_date":"2008","amount": 34.30 },
+                {"id":4,"statis_date":"2009","amount": 41.00 },
+                {"id":5,"statis_date":"2010","amount": 1.82 },
+                {"id":6,"statis_date":"2011","amount": 25.00 },
+                {"id":7,"statis_date":"2012","amount": 25.00 },
+                {"id":8,"statis_date":"2013","amount": 28.30 },
+                {"id":9,"statis_date":"2014","amount": 11.60 },
+                {"id":10,"statis_date":"2015","amount": 14.10 },
+                {"id":11,"statis_date":"2016","amount": -10.20 },
+                {"id":12,"statis_date":"2017","amount": 13.80 },
+                {"id":13,"statis_date":"2018","amount": -1.90 },
+                {"id":14,"statis_date":"2019","amount": -9.40 },
+                {"id":15,"statis_date":"2020","amount": -139.10 },
+              ]
+           }
+           else {
+              data = [
+                {"id":1,"statis_date":"2006","amount": 34.10  },
+                {"id":2,"statis_date":"2007","amount": 17.80  },
+                {"id":3,"statis_date":"2008","amount": 125.10  },
+                {"id":4,"statis_date":"2009","amount": 76.90  },
+                {"id":5,"statis_date":"2010","amount": 98.90  },
+                {"id":6,"statis_date":"2011","amount": 188.70  },
+                {"id":7,"statis_date":"2012","amount": 34.90  },
+                {"id":8,"statis_date":"2013","amount": 56.90  },
+                {"id":9,"statis_date":"2014","amount": -58.90  },
+                {"id":10,"statis_date":"2015","amount": -65.90  },
+                {"id":11,"statis_date":"2016","amount": -77.00  },
+                {"id":12,"statis_date":"2017","amount": -120.90  },
+                {"id":13,"statis_date":"2018","amount": -99.30  },
+                {"id":14,"statis_date":"2019","amount": 68.50  },
+                {"id":15,"statis_date":"2020","amount": 154.60  },
+              ]
+            }
+            let xAxisData = []
+         
             data.map((v, k) => {
               let name = v.statis_date;
               let value = v.amount;
-  
-              option.xAxis.data.push(name);
+
+              option.xAxis.data.unshift(name);
               option.series[0].data.push(value);
             });
-
+            option.xAxis.data = xAxisData
           this.$refs.abc.updateChart(option);
-        });
-
-      supply
-        .production({
-          fields: "id,statis_date,amount",
-          ordering: "-statis_date",
-          commodity: 1,
-          limit: 10,
-        })
-        .then((e) => {
-          if (e.code != 1000) {
-            return;
-          }
-          let data = []
-          if (mode === 2) {
-            data = [{"id":2,"statis_date":"202109","amount":307.5},{"id":7,"statis_date":"202108","amount":315.5},{"id":6,"statis_date":"202107","amount":326},{"id":5,"statis_date":"202106","amount":329},{"id":4,"statis_date":"202105","amount":331.7},{"id":8,"statis_date":"202104","amount":334.6},{"id":3,"statis_date":"202103","amount":327.6},{"id":9,"statis_date":"202102","amount":310.5},{"id":10,"statis_date":"202101","amount":315.1}]
-          }
-          else {
-            data = e.data.results
-          }
-          data = data.reverse();
-          // option.xAxis.data = [];
-          option.series[1].data = [];
-
-          data.map((v, k) => {
-            let name = v.statis_date;
-            let value = v.amount;
-
-            // option.xAxis.data.unshift(name);
-            option.series[1].data.push(value);
-          });
-
-          this.$refs.abc.updateChart(option);
-        });
     },
-    // 获取库存
-    get_stoage(mode = 1) {
+    // 行业占比
+    get_industry(mode = 1) {
       let option = {
+        title: {
+          show: false,
+        },
         tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
-          },
-        },
-        textStyle: {
-          fontStyle: {
-            color: "#fcc26f",
-          },
-        },
-        xAxis: {
-          type: "category",
-          axisTick: {
-            inside: true,
-            length: 0,
-            alignWithLabel: true,
-          },
-          axisLine: {
-            lineStyle: {
-              width: 2,
-              color: "#65B1EA",
-            },
-          },
-          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        },
-        yAxis: {
-          show: true,
-          nameLocation: "end",
-          nameTextStyle: {
-            // 坐标轴名称样式
-            color: "#65B1EA",
-            padding: [5, 0, 0, 5], // 坐标轴名称相对位置
-          },
-          nameGap: 10, // 坐标轴名称与轴线之间的距离
-          axisTick: {
-            inside: true,
-            length: 0,
-          },
-          axisLine: {
-            lineStyle: {
-              width: 2,
-              color: "#65B1EA",
-            },
-          },
-          splitLine: {
-            show: false,
-            lineStyle: {
-              type: "dashed",
-              color: "#1e95f0",
-            },
-          },
-          type: "value",
+          trigger: "item",
         },
         grid: {
-          left: 50,
-          right: 10,
-          top: 20,
-          bottom: 20,
+          left: "13%",
+          right: "60%",
+          top: "4%",
+          bottom: "10%",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "value",
           show: false,
-          borderColor: "transparent",
-          backgroundColor: "rgba(63,28,85,0.2)",
+          boundaryGap: [0, 0.01],
+        },
+        yAxis: {
+          type: "category",
+          data: [],
+          axisLine: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+          },
+          axisLabel: {
+            color: "#fff",
+          },
         },
         series: [
           {
             type: "bar",
-            barWidth: "20%",
+            barWidth: "30%",
             data: [
-              1000,
-              5200,
-              2000,
-              3340,
-              3900,
-              3300,
-              2200,
-              2200,
-              2200,
-              2200,
-              2200,
-              2200,
             ],
-            itemStyle: {
-              normal: { color: "#65B1EA" },
+            label: {
+                formatter: (e) => {
+                return e.data.value + '%'
+              }
+            }
+          },
+          {
+            type: "pie",
+            radius: [0, "60%"],
+            center: ["68%", "45%"],
+            showEmptyCircle: false,
+            data: [
+  
+            ],
+            roseType: "radius",
+            animationType: "scale",
+            animationEasing: "elasticOut",
+            animationDelay: function (idx) {
+              return Math.random() * 200;
+            },
+            label: {
+              color: "#6EBAEE",
+            },
+            labelLine: {
+              lineStyle: {
+                color: "#6EBAEE",
+                type: "dashed",
+              },
+            },
+            emphasis: {
+              labelLine: {
+                lineStyle: {
+                  color: "#6EBAEE",
+                  type: "dashed",
+                },
+              },
+            },
+            markPoint: {
+              show: false,
+            },
+            markLine: {
+              show: false,
+            },
+            markArea: {
+              show: false,
             },
           },
         ],
       };
+      let data = []
+      if (this.type_val == 1) {
+        data = [
+          {name: '电力投资', percent: 45},
+          {name: '房地产', percent: 18},
+          {name: '家用电器', percent: 16},
+          {name: '汽车制造', percent: 7},
+          {name: '其他', percent: 14},
+        ]
+      }
+      else {
+        data = [
+          {name: '建筑业', percent: 32},
+          {name: '电子电力', percent: 16},
+          {name: '交通运输', percent: 13},
+          {name: '耐用消费品', percent: 11},
+          {name: '钢材铝合金', percent: 12},
+          {name: '其他', percent: 16},
+        ]
+      }
+        let colorArr = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
+        data.map((v, k) => {
+          let name = v.name;
+          let name1 = `${k + 1} ${name}`;
+          let value = v.percent;
 
-      supply
-        .storage({
-          fields: "id,statis_date,amount",
-          ordering: "-statis_date",
-          commodity: 1,
-          limit: 10,
-        })
-        .then((e) => {
-          if (e.code != 1000) {
-            return;
-          }
-          let data = []
-          if (mode === 2) {
-            data = [{"id":1,"statis_date":"202109","amount":233806},{"id":1,"statis_date":"202108","amount":248926},{"id":2,"statis_date":"202107","amount":256214},{"id":3,"statis_date":"202106","amount":288741},{"id":4,"statis_date":"202105","amount":329572},{"id":5,"statis_date":"202104","amount":356609},{"id":6,"statis_date":"202103","amount":378792},{"id":7,"statis_date":"202102","amount":334440},{"id":8,"statis_date":"202101","amount":239504},{"id":9,"statis_date":"202012","amount":224235},{"id":10,"statis_date":"202011","amount":220373}].reverse()
-            
-          }
-          else {
-            data = e.data.results.reverse();
-          }
-          option.xAxis.data = [];
-          option.series[0].data = [];
+          // let color = random_color();
 
-          data.map((v, k) => {
-            let name = v.statis_date;
-            let value = v.amount;
-
-            option.xAxis.data.push(name);
-            option.series[0].data.push(value);
+          option.yAxis.data.unshift(name1);
+          
+          option.series[0].data.unshift({
+            value,
+            name,
+            itemStyle: {
+              color: colorArr[k]
+            }
           });
-
-          this.$refs.abc1.updateChart(option);
+          option.series[1].data.unshift({
+            value,
+            name,
+            itemStyle: {
+              color: colorArr[k]
+            },
+          });
         });
+        this.$refs.abc1.updateChart(option);
     },
   },
 };

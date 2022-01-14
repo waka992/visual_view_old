@@ -5,7 +5,7 @@
 
     <div class="body">
       <div class="one">
-        <WorldMap ref="abc2" :height="'70vh'" />
+        <WorldMap ref="abc2" :height="'80vh'" />
       </div>
       <div class="one2">
         <div class="pos">
@@ -24,7 +24,7 @@
             <div class="text">{{mode.index == 0 ? '铜材' : '铝土矿'}}进口来源国家排名</div>
           </div>
           <div class="desc">
-            <ReserveMap ref="abc" :height="'43vh'" :index="mode.index"/>
+            <ReserveMap ref="abc" :height="'31vh'" :index="mode.index"/>
           </div>
         </div>
         <div class="btns">
@@ -46,20 +46,20 @@
             <div class="text">{{mode.index == 0 ? '铜矿' : '铝土矿'}}进口量趋势图</div>
           </div>
           <div class="desc">
-            <ProductionBar ref="abc1" :height="'20vh'"/>
+            <ProductionBar ref="abc1" :height="'13vh'"/>
           </div>
         </div>
-      </div>
-      <div class="one3">
-        <div>
+
+        <div style="margin-top:13px;">
           <div class="title">
             <div class="text">我国铜铝在全球地位</div>
           </div>
           <div class="desc">
-            <ProductionBar ref="importpercent" :height="'20vh'"/>
+            <ProductionBar ref="importpercent" :height="'13vh'"/>
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </template>
@@ -135,15 +135,19 @@ export default {
         },
         grid: {
           left: "0%",
-          // right: "4%",
-          top: "75%",
-          bottom: "0%",
+          right: "60%",
+          top: "0%",
+          bottom: "65%",
           containLabel: true,
         },
         xAxis: {
           type: "value",
           show: false,
           boundaryGap: [0, 0.01],
+          interval: 0,
+          nameTextStyle: {
+            align: 'left'
+          },
         },
         yAxis: {
           type: "category",
@@ -157,11 +161,18 @@ export default {
           axisLabel: {
             color: "#fff",
           },
+          nameTextStyle: {
+            align: 'left'
+          },
+          boundaryGap: [0, 0.01],
         },
         series: [
           {
             type: "bar",
-            barWidth: "30%",
+            barWidth: "50%",
+            // barCategoryGap: '20%',
+            label: {
+            },
             data: [
               // {
               //   value: 100,
@@ -190,8 +201,8 @@ export default {
           },
           {
             type: "pie",
-            radius: [0, "60%"],
-            center: ["50%", "35%"],
+            radius: [0, "72%"],
+            center: ["60%", "56%"],
             showEmptyCircle: false,
             data: [
               {
@@ -733,7 +744,7 @@ $yellow: #fec979;
       text-align: center;
       height: 40px;
       line-height: 40px;
-      font-size: 24px;
+      font-size: 22px;
     }
   }
 
@@ -750,7 +761,7 @@ $yellow: #fec979;
     }
 
     .btns {
-      margin: 10px 0;
+      margin: 13px 0;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -803,10 +814,10 @@ $yellow: #fec979;
     }
   }
 
-  .one3 {
-    position: absolute;
-    bottom: 0;
-    right: 31vw;
-  }
+  // .one3 {
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: 31vw;
+  // }
 }
 </style>

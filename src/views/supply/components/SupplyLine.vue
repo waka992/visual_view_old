@@ -14,7 +14,7 @@ let option = {
   // },
   legend: {
     right:"10%",
-    data: ["消费量", "生产量"],
+    show: true,
     textStyle: {
       color: "#2a71b5",
     },
@@ -53,18 +53,18 @@ let option = {
       itemStyle: {
         color: "#E20A3C",
       },
-      name: "消费量",
+      name: "当月缺口",
       showSymbol: false,
     },
-    {
-      data: [100, 100, 100, 100, 100, 150, 230, 224, 218, 135, 147, 260],
-      type: "line",
-      itemStyle: {
-        color: "#E1B738",
-      },
-      name: "生产量",
-      showSymbol: false,
-    },
+    // {
+    //   data: [100, 100, 100, 100, 100, 150, 230, 224, 218, 135, 147, 260],
+    //   type: "line",
+    //   itemStyle: {
+    //     color: "#E1B738",
+    //   },
+    //   name: "生产量",
+    //   showSymbol: false,
+    // },
   ],
 };
 

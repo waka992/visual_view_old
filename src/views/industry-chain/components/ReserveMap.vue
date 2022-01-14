@@ -30,6 +30,7 @@ let option = {
   yAxis: {
     type: "category",
     data: ["四 美国", "三 德国", "二 韩国", "一 中国"],
+    offset: 70,
     axisLine: {
       show: false,
     },
@@ -38,6 +39,8 @@ let option = {
     },
     axisLabel: {
       color: "#fff",
+      align: 'left',
+      width: 70
     },
   },
   series: [
@@ -48,6 +51,7 @@ let option = {
         show: true,
         position: 'right',
         color: '#6EBAEE',
+        distance: 6,
         formatter: (e) => {
           return e.data.value + '万吨'
         }

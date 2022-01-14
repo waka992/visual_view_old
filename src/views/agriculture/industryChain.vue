@@ -260,14 +260,6 @@ export default {
           option.series[0].data = [];
           option.series[1].data = [];
 
-          function random_color() {
-            let r = Math.floor(Math.random() * 255);
-            let g = Math.floor(Math.random() * 255);
-            let b = Math.floor(Math.random() * 255);
-            let color = "rgba(" + r + "," + g + "," + b + ",1)";
-
-            return color;
-          }
           let colorArr = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
           data.map((v, k) => {
             let name = v.country.title;
