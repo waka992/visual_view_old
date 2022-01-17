@@ -151,7 +151,19 @@ export const constantRouterMap = [{
         path: '/memorabilia',
         component: () =>
             import ('@/views/memorabilia/index'),
-        name: 'industryposition',
+        name: 'memorabilia',
+        meta: {
+            title: '荣誉和大事记',
+        },
+    },
+    /**
+     * 荣誉和大事记 详细
+     */
+    {
+        path: '/memorabilia/detail',
+        component: () =>
+            import ('@/views/memorabilia/detail'),
+        name: 'memorabiliadetail',
         meta: {
             title: '荣誉和大事记',
         },

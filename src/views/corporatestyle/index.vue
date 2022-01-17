@@ -3,35 +3,6 @@
     <BackGround />
     <Header title="企业风采" />
     <div class="content">
-      <!-- <video-player class="vjs-custom-skin" ref="videoPlayer"
-            controls :options="playerOptions" @ready="playerReadied" @play="onPlayerPlay($event)"  @ended="onPlayerEnded($event)" ></video-player> -->
-      <!-- <div class="logo-area">
-        <div class="logo"></div>
-        <div class="logo-text">佛山市龙汇供应链管理服务有限公司</div>
-      </div>
-
-      <div class="intro">
-        <img
-          class="top-border"
-          src="/static/images/corporatestyle/intro-border.png"
-        />
-        <div class="intro-info">
-          于2013年11月12日成立，由拥有20多年有色金属贸易实践经验的服务商共同投资组建，在有色金属，大宗商品现货交易、仓储、物流、融资等方面具有丰富的营运经验、雄厚的产业基础和广泛的市场资源，致力打造国内一流的交易平台。
-        </div>
-        <img
-          class="bottom-border"
-          src="/static/images/corporatestyle/intro-border.png"
-        />
-      </div>
-
-      <div class="dev-btn" @click="$router.push({ path: '/memorabilia' })">
-        <div class="dev-info">发展历程</div>
-        <img
-          class="dev-arrow"
-          src="/static/images/corporatestyle/btn-arrow.png"
-        />
-      </div> -->
-
       <div
         class="item"
         :class="'item' + i"

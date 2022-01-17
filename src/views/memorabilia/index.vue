@@ -11,11 +11,11 @@
         class="point"
         :class="'point' + i"
       ></div>
-      <div v-for="(content, j) in contents" :key="'content' + j" class="content" :class="'content' + j">
-        <div class="pic">
+      <div v-for="(content, j) in contents" :key="'content' + j" class="content" :class="'content' + j" >
+        <div class="pic"  @click="$router.push({ path: '/memorabilia/detail' })">
             <img class="pic-img" src="/static/images/corporatestyle/pic-1.png" alt="">
         </div>
-        <div class="intro-info">
+        <div class="intro-info"  @click="$router.push({ path: '/memorabilia/detail' })">
             <div class="title">{{content.date}}</div>
             <div class="intro">{{content.intro}}</div>
         </div>
@@ -120,6 +120,7 @@ export default {
 .content {
   position: absolute;
   width: 308px;
+  z-index: 5;
 
   .pic {
     position: absolute;
