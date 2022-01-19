@@ -236,10 +236,10 @@ export const constantRouterMap = [{
      * 农产品需求
      */
     {
-        path: '/agriculture/supply',
+        path: '/agriculture/demand/:type',
         component: () =>
-            import ('@/views/agriculture/supply'),
-        name: 'agriculturesupply',
+            import ('@/views/agriculture/demand'),
+        name: 'agriculturedemand',
         meta: {
             title: '农产品需求',
         },

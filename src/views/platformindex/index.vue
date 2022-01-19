@@ -72,7 +72,7 @@
         </div>
         <div class="statistics">
             <div class="title">
-                <div class="text">上海--华南铝价基差</div>
+                <div class="text">华南铝价--上海基差</div>
             </div>
             <div class="desc">
                 <LineStack />

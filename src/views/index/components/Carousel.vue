@@ -8,7 +8,7 @@
                 <img src="~@/assets/images/index/hdjy.png" alt="互动交易" />
             </swiper-slide>
             <swiper-slide>
-                <img src="~@/assets/images/index/ryhds.png" alt="荣誉和大事记" />
+                <img src="~@/assets/images/index/ncp.png" alt="农产品概况" />
             </swiper-slide>
             <swiper-slide>
                 <img src="~@/assets/images/index/zs.png" alt="指数" />
@@ -85,7 +85,8 @@ export default {
             switch(reali) {
                 case 0: path = 'trainsalon'; break
                 case 1: path = 'interactive'; break
-                case 2: path = 'memorabilia'; break
+                // case 2: path = 'memorabilia'; break
+                case 2: path = 'agricultureChain'; break
                 case 3: path = 'platformindex'; break
                 case 4: path = 'exchangedata'; break
                 case 5: path = 'industrychain'; break

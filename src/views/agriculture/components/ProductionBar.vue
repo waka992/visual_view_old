@@ -16,11 +16,6 @@ let option = {
       type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
     },
   },
-  textStyle: {
-    fontStyle: {
-      color: "#fcc26f",
-    },
-  },
   xAxis: {
     type: "category",
     axisTick: {
@@ -34,11 +29,16 @@ let option = {
         color: "#65B1EA",
       },
     },
+    axisLabel: {
+      fontSize: 13,
+      fontWeight: 'bold'
+    },
     data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
   },
   yAxis: {
     show: true,
     nameLocation: "end",
+    name: '万吨',
     nameTextStyle: {
       // 坐标轴名称样式
       color: "#65B1EA",
@@ -48,6 +48,10 @@ let option = {
     axisTick: {
       inside: true,
       length: 0,
+    },
+    axisLabel: {
+      fontSize: 13,
+      fontWeight: 'bold'
     },
     axisLine: {
       lineStyle: {
@@ -65,11 +69,11 @@ let option = {
     type: "value",
   },
   grid: {
-    left: 50,
-    right: 10,
-    top: 20,
-    bottom: 20,
-    show: false,
+    left: 20,
+    right: 20,
+    top: 30,
+    bottom: 22,
+    containLabel: true,
     borderColor: "transparent",
     backgroundColor: "rgba(63,28,85,0.2)",
   },
@@ -91,6 +95,10 @@ let option = {
         2200,
         2200,
       ],
+      label: {
+        show: true,
+        position: 'top',
+      },
       itemStyle: {
         normal: { color: "#65B1EA" },
       },

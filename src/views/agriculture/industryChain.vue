@@ -21,14 +21,14 @@
         </div>
         <div>
           <div class="title">
-            <div class="text">{{mode.index == 0 ? '豆粕' : '玉米'}}进口国进口量</div>
+            <div class="text">{{mode.index == 0 ? '2020年豆粕' : '2021年玉米'}}进口国进口量</div>
           </div>
           <div class="desc">
             <ReserveMap ref="abc" :height="'43vh'" :index="mode.index"/>
           </div>
         </div>
         <div class="btns">
-          <div @click="$router.push({ path: '/agriculture/supply', name: 'agriculturesupply', params:{type: mode.index}})" class="btn btn1">
+          <div @click="$router.push({ path: '/agriculture/demand', name: 'agriculturedemand', params:{type: mode.index}})" class="btn btn1">
             <img src="/static/images/industrychain-1.png" alt="" srcset="" />
             <div>供需关系</div>
           </div>
@@ -151,34 +151,11 @@ export default {
             type: "bar",
             barWidth: "30%",
             data: [
-              // {
-              //   value: 100,
-              //   name: "美国",
-              //   itemStyle: {
-              //     color: {
-              //       type: "linear",
-              //       x: 0,
-              //       y: 0,
-              //       x2: 0,
-              //       y2: 1,
-              //       colorStops: [
-              //         {
-              //           offset: 0,
-              //           color: "#FF002C", // 0% 处的颜色
-              //         },
-              //         {
-              //           offset: 1,
-              //           color: "#FF3881", // 100% 处的颜色
-              //         },
-              //       ],
-              //     },
-              //   },
-              // },
             ],
           },
           {
             type: "pie",
-            radius: [0, "60%"],
+            radius: [0, "58%"],
             center: ["50%", "35%"],
             showEmptyCircle: false,
             data: [
@@ -241,28 +218,29 @@ export default {
           },
         ],
       };
-
-      industrychain
-        .materialimportsource({
-          ordering: "-amount",
-          fields: "id,amount,country",
-          commodity: mode,
-          expand: "country",
-          year: "2021",
-        })
-        .then((e) => {
-          if (e.code != 1000) {
-            return;
-          }
-          let data = e.data.results;
-
+        let data = []
+        if (mode == 1) {
+          data = [
+            {country: '巴西', amount: 6207.24},
+            {country: '美国', amount: 2361.25},
+            {country: '阿根廷', amount: 745.57},
+            {country: '其他国家', amount: 717.39},
+          ]
+        }
+        else {
+          data = [
+            {country: '美国', amount: 1958.94},
+            {country: '乌克兰', amount: 731.49},
+            {country: '其他国家', amount: 10.58},
+          ]
+        }
           option.yAxis.data = [];
           option.series[0].data = [];
           option.series[1].data = [];
 
           let colorArr = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
           data.map((v, k) => {
-            let name = v.country.title;
+            let name = v.country;
             let name1 = `${k + 1} ${name}`;
             let value = v.amount;
 
@@ -286,7 +264,6 @@ export default {
             });
           });
           this.$refs.abc.updateChart(option);
-        });
     },
     // 获取趋势
     get_trend(mode = 1) {
@@ -320,7 +297,7 @@ export default {
         },
         yAxis: {
           show: true,
-          name: "万吨",
+          name: "亿吨",
           nameLocation: "end",
           nameTextStyle: {
             // 坐标轴名称样式
@@ -368,32 +345,35 @@ export default {
           },
         ],
       };
-
-      industrychain
-        .materialimporttotal({
-          ordering: "-statis_date",
-          fields: "id,statis_date,amount",
-          commodity: mode,
-          query_years: 6,
-        })
-        .then((e) => {
-          if (e.code != 1000) {
-            return;
-          }
-          let data = e.data.results;
+      let data =[]
+      if(mode == 1) {
+        data = [
+          {country: '中国', amount: 0.16},
+          {country: '阿根廷', amount: 0.50},
+          {country: '美国', amount: 1.20},
+          {country: '巴西', amount: 1.44},
+        ]
+      }
+      else {
+        data = [
+          {country: '欧盟27国', amount: 0.70},
+          {country: '巴西', amount: 1.18},
+          {country: '中国', amount: 2.73},
+          {country: '美国', amount: 3.83},
+        ]
+      }
           option.xAxis.data = [];
           option.series[0].data = [];
 
           data.map((v, k) => {
-            let name = v.statis_date;
+            let name = v.country;
             let value = v.amount;
 
-            option.xAxis.data.unshift(name);
-            option.series[0].data.unshift(value);
+            option.xAxis.data.push(name);
+            option.series[0].data.push(value);
           });
 
           this.$refs.abc1.updateChart(option);
-        });
     },
     // 获取飞线
     get_fly(mode = 1) {
@@ -483,24 +463,22 @@ export default {
         ],
       };
 
-      industrychain
-        .flyline({
-          mode: mode, // 0 铜 1 铝
-          fields:
-            "id,longitude_start,latitude_start,longitude_end,latitude_end",
-        })
-        .then((e) => {
-          if (e.code != 1000) {
-            return;
-          }
           // 铝
           let data = []
-          if (mode === 2) {
-            data = [{"id":6,"longitude_start":19.015908,"latitude_start":52.800932,"longitude_end":115.27226,"latitude_end":38.635842},{"id":7,"longitude_start":-10.051821,"latitude_start":10.442355,"longitude_end":115.27226,"latitude_end":38.635842},{"id":8,"longitude_start":117.165486,"latitude_start":0.138001,"longitude_end":115.27226,"latitude_end":38.635842}]
+          if (mode === 1) {
+             data = [
+               {"id":1,"longitude_start":-47.55,"latitude_start":-15.47,"longitude_end":115.27226,"latitude_end":38.635842},
+               {"id":2,"longitude_start":-77.02,"latitude_start":39.91,"longitude_end":115.27226,"latitude_end":38.635842},
+               {"id":3,"longitude_start":-60.00,"latitude_start":-36.30,"longitude_end":115.27226,"latitude_end":38.635842},
+            ]
           }
           else {
             // data = e.data.results;
-            data = [{"id":2,"longitude_start":139.630281,"latitude_start":36.661181,"longitude_end":115.27226,"latitude_end":38.635842},{"id":3,"longitude_start":68.248769,"latitude_start":47.97209,"longitude_end":115.27226,"latitude_end":38.635842},{"id":4,"longitude_start":134.846984,"latitude_start":-25.431389,"longitude_end":115.27226,"latitude_end":38.635842},{"id":5,"longitude_start":-75.619787,"latitude_start":-9.422664,"longitude_end":115.27226,"latitude_end":38.635842}]
+            
+            data = [
+               {"id":4,"longitude_start":-77.02,"latitude_start":39.91,"longitude_end":115.27226,"latitude_end":38.635842},
+               {"id":5,"longitude_start":30.28,"latitude_start":50.30,"longitude_end":115.27226,"latitude_end":38.635842},
+            ]
           }
           option.series[0].data = [];
           option.series[1].data = [];
@@ -536,7 +514,6 @@ export default {
           });
 
           this.$refs.abc2.updateChart(option);
-        });
     },
   },
 };

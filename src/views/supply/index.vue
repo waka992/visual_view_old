@@ -104,7 +104,6 @@ import * as supply from "@/api/supply";
 import BackGround from "@/components/BackGround2";
 import Header from "@/components/Header";
 
-import ProductionBar from "./components/ProductionBar";
 import SupplyLine from "./components/SupplyLine";
 import ReserveMap from "@/views/industry-chain/components/ReserveMap";
 
@@ -113,7 +112,6 @@ export default {
   components: {
     SupplyLine,
     Header,
-    ProductionBar,
     BackGround,
     ReserveMap
   },
