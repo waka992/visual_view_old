@@ -359,6 +359,7 @@ $yellow: #fec979;
   color: $white;
   overflow: hidden;
   // font-size: 20px;
+  user-select: none;
 
   .title {
     // border-left: 5px solid $yellow;
