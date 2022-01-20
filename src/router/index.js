@@ -73,7 +73,7 @@ export const constantRouterMap = [{
      * 供需关系
      */
     {
-        path: '/supply',
+        path: '/supply/:type',
         component: () =>
             import ('@/views/supply/index'),
         name: 'supply',

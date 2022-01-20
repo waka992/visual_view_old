@@ -21,7 +21,7 @@
         </div>
         <div>
           <div class="title">
-            <div class="text">{{mode.index == 0 ? '铜材' : '铝土矿'}}进口来源国家排名</div>
+            <div class="text">{{mode.index == 0 ? '精炼铜' : '铝土矿'}}进口来源国家排名</div>
           </div>
           <div class="desc">
             <ReserveMap ref="abc" :height="'31vh'" :index="mode.index"/>

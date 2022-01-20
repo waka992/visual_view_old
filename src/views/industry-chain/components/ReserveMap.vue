@@ -100,11 +100,9 @@ let option = {
         return Math.random() * 200;
       },
       label: {
+        show: true,
         color: "#6EBAEE",
-        // formatter: (e) => {
-        //   console.log(e)
-        //   return e.data.name + ' ' +e.data.value
-        // }
+        overflow: 'none',
       },
       labelLine: {
         lineStyle: {

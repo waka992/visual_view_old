@@ -21,7 +21,7 @@
         </div>
         <div>
           <div class="title">
-            <div class="text">{{mode.index == 0 ? '2020年豆粕' : '2021年玉米'}}进口国进口量</div>
+            <div class="text">{{mode.index == 0 ? '2020年大豆' : '2021年玉米'}}进口国进口量</div>
           </div>
           <div class="desc">
             <ReserveMap ref="abc" :height="'43vh'" :index="mode.index"/>
@@ -43,7 +43,7 @@
         </div>
         <div>
           <div class="title">
-            <div class="text">{{mode.index == 0 ? '豆粕' : '玉米'}}主要国家产量排名</div>
+            <div class="text">{{mode.index == 0 ? '大豆' : '玉米'}}主要国家产量排名</div>
           </div>
           <div class="desc">
             <ProductionBar ref="abc1" :height="'20vh'"/>
@@ -157,7 +157,6 @@ export default {
             type: "pie",
             radius: [0, "58%"],
             center: ["50%", "35%"],
-            showEmptyCircle: false,
             data: [
               {
                 value: 400,
@@ -183,55 +182,23 @@ export default {
                 },
               },
             ],
-            roseType: "radius",
-            animationType: "scale",
-            animationEasing: "elasticOut",
-            animationDelay: function (idx) {
-              return Math.random() * 200;
-            },
-            label: {
-              color: "#6EBAEE",
-            },
-            labelLine: {
-              lineStyle: {
-                color: "#6EBAEE",
-                type: "dashed",
-              },
-            },
-            emphasis: {
-              labelLine: {
-                lineStyle: {
-                  color: "#6EBAEE",
-                  type: "dashed",
-                },
-              },
-            },
-            markPoint: {
-              show: false,
-            },
-            markLine: {
-              show: false,
-            },
-            markArea: {
-              show: false,
-            },
           },
         ],
       };
         let data = []
         if (mode == 1) {
           data = [
-            {country: '巴西', amount: 6207.24},
-            {country: '美国', amount: 2361.25},
-            {country: '阿根廷', amount: 745.57},
-            {country: '其他国家', amount: 717.39},
+            {country: '巴西', amount: 6207.24, percent: 62},
+            {country: '美国', amount: 2361.25, percent: 24},
+            {country: '阿根廷', amount: 745.57, percent: 7},
+            {country: '其他国家', amount: 717.39, percent: 7},
           ]
         }
         else {
           data = [
-            {country: '美国', amount: 1958.94},
-            {country: '乌克兰', amount: 731.49},
-            {country: '其他国家', amount: 10.58},
+            {country: '美国', amount: 1958.94, percent: 73},
+            {country: '乌克兰', amount: 731.49, percent: 27},
+            {country: '其他国家', amount: 10.58, percent: 0},
           ]
         }
           option.yAxis.data = [];
@@ -241,23 +208,24 @@ export default {
           let colorArr = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
           data.map((v, k) => {
             let name = v.country;
-            let name1 = `${k + 1} ${name}`;
+            let nameBar = `${k + 1} ${name}`;
+            let namePie = `${name} ${v.percent}%`
             let value = v.amount;
 
             // let color = random_color();
 
-            option.yAxis.data.unshift(name1);
+            option.yAxis.data.unshift(nameBar);
             
             option.series[0].data.unshift({
               value,
-              name,
+              nameBar,
               itemStyle: {
                 color: colorArr[k]
               }
             });
             option.series[1].data.unshift({
               value,
-              name,
+              name: namePie,
               itemStyle: {
                 color: colorArr[k]
               },

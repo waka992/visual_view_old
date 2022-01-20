@@ -148,38 +148,12 @@ export default {
       },
       enterprise: {
         list: [
-          {
-            title: "江西铜业",
-            num: "产量: 2,753,500.00吨",
-            desc:
-              "江西铜业股份有限公司的主要业务涵盖了铜的采选、冶炼和加工，贵金属和稀散金属的提取与加工，硫化工，以及金融、贸易等领域。",
-            img: "/static/images/supply-img5.png",
-          },
-          {
-            title: "云南铜业",
-            num: "产量: 1,115,133.00吨",
-            desc:
-              "云南铜业股份有限公司的主要业务涵盖了铜的采选、冶炼，贵金属和稀散金属的提取与加工，硫化工以及贸易等领域。",
-            img: "/static/images/supply-img6.png",
-          },
+        
         ],
       },
       enterprise1: {
         list: [
-          {
-            title: "铜陵有色",
-            num: "产量: 1,400,634吨",
-            desc:
-              "铜陵有色金属集团股份有限公司是一家集采选、冶炼、加工、贸易为一体的综合性铜生产企业。",
-            img: "/static/images/supply-img7.png",
-          },
-          {
-            title: "紫金矿业",
-            num: "产量: 277，324吨",
-            desc:
-              "紫金矿业集团股份有限公司主要从事矿产资源勘查,金铜矿选、冶;矿产品。",
-            img: "/static/images/supply-img8.png",
-          },
+         
         ],
       },
     };
@@ -253,60 +227,76 @@ export default {
                 list: [
                   {
                     title: "山东魏桥",
-                    num: "产量: 646万吨",
+                    num: "产量: 646万吨/年",
                     desc:
                       "山东魏桥铝电有限公司是一家集热电铝业联产的民营企业。成立于2002年，是集热电、氧化铝、电解铝、铝深加工于一体的特大型综合企业。",
                     img: "/static/images/supply-img14.png",
                   },
                   {
                     title: "中国铝业",
-                    num: "产量: 369万吨",
+                    num: "产量: 446万吨/年",
                     desc:
                       "中国铝业股份有限公司是中央管理的国有重要骨干企业，从事矿产资源开发、有色金属冶炼加工、相关贸易及工程技术服务等，同业综合实力位居全国第一。",
                     img: "/static/images/supply-img13.png",
                   },
-               
                 ],
               }
             this.enterprise1 = {
               list: [
                 {
                   title: "信发铝电",
-                  num: "产量: 218万吨",
+                  num: "产量: 218万吨/年",
                   desc:
                     "山东信发铝电集团有限公司是集发电、供热、电解铝、氧化铝、中高密度板、铝深加工等产业链条于一体的现代化大型企业集团",
                   img: "/static/images/supply-img15.png",
                 },
                 {
-                  title: "东方希望",
-                  num: "产量: 190万吨",
+                  title: "云铝股份",
+                  num: "产量: 240万吨/年",
                   desc:
-                    "新疆东方希望有色金属有限公司经营范围包括原铝、铝锭、铝板、铝棒、铝合金、铝母线及其加工产品的生产与销售等。",
-                  img: "/static/images/supply-img12.png",
+                    "铝土矿开采、氧化铝生产、铝冶炼、铝加工及铝用炭素生产，形成了集铝土矿、氧化铝、电解铝、铝加工及铝用炭素生产为一体的完整产业链。",
+                  img: "/static/images/supply-img7.png",
                 },
               ],
             }
           }
           else {
-            data = e.data.results;
-            this.enterprise.list.map((v, k) => {
-              this.enterprise.list[k].title = data[k].title;
-              this.enterprise.list[k].img = data[k].icon;
-              this.enterprise.list[k].desc = data[k].description;
-              this.enterprise.list[
-                k
-              ].num = `产量: ${data[k].annual_production}吨`;
-            });
-  
-            this.enterprise1.list.map((v, k) => {
-              let index = k + 2;
-              this.enterprise1.list[k].title = data[index].title;
-              this.enterprise1.list[k].img = data[index].icon;
-              this.enterprise1.list[k].desc = data[index].description;
-              this.enterprise1.list[
-                k
-              ].num = `产量: ${data[index].annual_production}吨`;
-            });
+              this.enterprise= {
+                list: [
+                  {
+                    title: "江西铜业",
+                    num: "产量: 164万吨/年",
+                    desc:
+                      "江西铜业是中国国内最大的铜生产基地，最大的伴生金、银生产基地。电解铜年产量164万吨，占国内总产量的16%。预估2021年公司生产阴极铜173万吨。",
+                    img: "/static/images/supply-img5.png",
+                  },
+                  {
+                    title: "铜陵有色",
+                    num: "产量: 142万吨/年",
+                    desc:
+                      "年产量142万吨，占国内总产量的14%。名列国内、国际精炼铜生产企业前茅。预估2021年公司生产阴极铜151万吨。",
+                    img: "/static/images/supply-img6.png",
+                  },
+                ],
+              }
+              this.enterprise1= {
+                list: [
+                  {
+                    title: "云南铜业",
+                    num: "产量: 131万吨/年",
+                    desc:
+                      "是中国重要的铜、金、银和硫化工生产基地。其中阴极铜产能130万吨/年。",
+                    img: "/static/images/supply-img7.png",
+                  },
+                  {
+                    title: "紫金矿业",
+                    num: "产量: 45万吨/年",
+                    desc:
+                      "通过资源并购及自主勘查，紫金矿业铜资源储量持续快速增长，其在海外12个国家拥有重要矿业投资项目，其中包括6座铜矿。",
+                    img: "/static/images/supply-img8.png",
+                  },
+                ],
+              }
           }
         });
     },
