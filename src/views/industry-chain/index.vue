@@ -689,11 +689,11 @@ export default {
                   colorStops: [
                     {
                       offset: 0,
-                      color: "#66b1ea", // 0% 处的颜色
+                      color: "#ee6666", // 0% 处的颜色
                     },
                     {
                       offset: 1,
-                      color: "#addcfe", // 100% 处的颜色
+                      color: "#F7B8B8", // 100% 处的颜色
                     },
                   ],
                 },
