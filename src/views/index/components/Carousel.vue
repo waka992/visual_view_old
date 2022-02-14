@@ -1,35 +1,8 @@
 <template>
     <div class="example-3d">
         <swiper class="swiper" :options="swiperOption" @click-slide="jumpTo">
-            <!-- <swiper-slide>
-                <img src="~@/assets/images/index/sl.png" alt="沙龙" />
-            </swiper-slide> -->
-            <swiper-slide>
-                <img src="~@/assets/images/index/hdjy.png" alt="互动交易" />
-            </swiper-slide>
-            <swiper-slide>
-                <img src="~@/assets/images/index/ncp.png" alt="农产品概况" />
-            </swiper-slide>
-            <swiper-slide>
-                <img src="~@/assets/images/index/zs.png" alt="指数" />
-            </swiper-slide>
-            <swiper-slide>
-                <img src="~@/assets/images/index/jysj.png" alt="交易数据" />
-            </swiper-slide>
-            <swiper-slide>
-                <img src="~@/assets/images/index/cyl.png" alt="产业链" />
-            </swiper-slide>
-            <swiper-slide>
-                <img src="~@/assets/images/index/qyfc.png" alt="企业风采" />
-            </swiper-slide>
-            <swiper-slide>
-                <img src="~@/assets/images/index/hydw.png" alt="行业定位" />
-            </swiper-slide>
-            <swiper-slide>
-                <img src="~@/assets/images/index/hzhb.png" alt="合作伙伴" />
-            </swiper-slide>
-            <swiper-slide  >
-                <img src="~@/assets/images/index/rlhy.png" alt="热烈欢迎"/>
+            <swiper-slide v-for="(item,i) in swiperList" :key="i">
+                <img :src="item.src" :alt="item.alt" />
             </swiper-slide>
         </swiper>
         <div class="swiper-decoration"></div>
@@ -72,31 +45,25 @@ export default {
                 touchRatio: 4,
                 // followFinger: false,
             },
+            swiperList: [
+                // {src: require('@/assets/images/index/sl.png'), alt: '沙龙', path: 'trainsalon'},
+                {src: require('@/assets/images/index/hdjy.png'), alt: '互动交易', path: 'interactive'},
+                {src: require('@/assets/images/index/ncp.png'), alt: '农产品概况', path: 'agricultureChain'},
+                {src: require('@/assets/images/index/zs.png'), alt: '指数', path: 'platformindex'},
+                {src: require('@/assets/images/index/jysj.png'), alt: '交易数据', path: 'exchangedata'},
+                {src: require('@/assets/images/index/cyl.png'), alt: '产业链', path: 'industrychain'},
+                {src: require('@/assets/images/index/qyfc.png'), alt: '企业风采', path: 'corporatestyle'},
+                {src: require('@/assets/images/index/hydw.png'), alt: '行业定位', path: 'industryposition'},
+                {src: require('@/assets/images/index/hzhb.png'), alt: '合作伙伴', path: 'friend'},
+                {src: require('@/assets/images/index/rlhy.png'), alt: '热烈欢迎', path: 'welcome'},
+            ]
         };
     },
 
     methods: {
-        // jump(pathData){
-        //     console.log(pathData)
-        //     this.$router.push({path: pathData})
-        // },
         jumpTo(i, reali) {
-            let path = ''
-            switch(reali) {
-                case 0: path = 'trainsalon'; break
-                case 1: path = 'interactive'; break
-                // case 2: path = 'memorabilia'; break
-                case 2: path = 'agricultureChain'; break
-                case 3: path = 'platformindex'; break
-                case 4: path = 'exchangedata'; break
-                case 5: path = 'industrychain'; break
-                case 6: path = 'corporatestyle'; break
-                case 7: path = 'industryposition'; break
-                case 8: path = 'friend'; break
-                case 9: path = 'welcome'; break
-            }
+            let path = this.swiperList[reali].path
             this.$router.push({path: path})
-
         }
     }
 };
