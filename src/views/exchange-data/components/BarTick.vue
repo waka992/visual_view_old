@@ -44,7 +44,7 @@
                         let loopData = res.data;
                         for (let i = 0; i < loopData.length; i++) {
                             this.xData[i] = loopData[i].year
-                            this.yData[i] = loopData[i].amount
+                            this.yData[i] = Number(loopData[i].amount).toFixed(2)
                         }
                         this.initChart();
                     }

@@ -1,9 +1,9 @@
 <template>
     <div class="example-3d">
         <swiper class="swiper" :options="swiperOption" @click-slide="jumpTo">
-            <swiper-slide>
+            <!-- <swiper-slide>
                 <img src="~@/assets/images/index/sl.png" alt="沙龙" />
-            </swiper-slide>
+            </swiper-slide> -->
             <swiper-slide>
                 <img src="~@/assets/images/index/hdjy.png" alt="互动交易" />
             </swiper-slide>

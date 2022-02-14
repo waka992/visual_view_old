@@ -73,7 +73,7 @@
                         <el-row >
                             <el-col :span="12">
                                 <Pie :year="tradeYear" :type="'platform'" :height="'23vh'"/>
-                                <div style="text-align:center;margin-top:0vh;">占国内交易量比重</div>
+                                <div style="text-align:center;margin-top:0vh;">占国内现货平台交易量比重</div>
                             </el-col>
                             <el-col :span="12">
                                 <Pie :year="tradeYear" :type="'country'" :height="'23vh'"/>

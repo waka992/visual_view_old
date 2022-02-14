@@ -41,7 +41,8 @@
         >
           <img class="pic-img" :src="pic.url" />
         </div>
-        <div class="item-title"  @click="$router.push({ path: '/memorabilia' })">发展历程</div>
+        <div class="item-title">发展历程</div>
+        <!-- <div class="item-title"  @click="$router.push({ path: '/memorabilia' })">发展历程</div> -->
       </div>
 
       <div class="big-eight" @click="$router.push({ path: '/corporatestyle/bigeight' })">
@@ -116,7 +117,7 @@ export default {
         {
           title: "产业创新",
           desc:
-            "2014年，在区、镇两级政府的大力支持下，广东有色金属交易平台（后更名为“广东金属交易中心”）正式成立，旨在重塑大沥产业结构，助力产业升级。交易中心为会员提供交易服务、结算服务、交收服务、信息服务及其他创新服务。"
+            "2014年，在区、镇两级政府的大力支持下，广东有色金属交易平台正式成立，旨在重塑大沥产业结构，助力产业升级。交易中心为会员提供交易服务、结算服务、交收服务、信息服务及其他创新服务。"
         },
         {
           title: "产业集聚",
@@ -126,15 +127,15 @@ export default {
         {
           title: "持续发展",
           desc:
-            "交易中心实现了有色金属现货产品高效流转。交易额从2014年421.89亿元增长到2020年3382.81亿元。交易中心发布“华南铝价”、成立广东南海有色金属产业联盟,推动产业链不断延伸，争夺行业话语权，成为华南地区有色金属企业总部的汇聚点。"
+            "交易中心实现了有色金属现货产品高效流转。交易额从2014年421.89亿元增长到2021年4343.82亿元。交易中心发布“华南铝价”、成立广东南海有色金属产业联盟,推动产业链不断延伸，争夺行业话语权，成为华南地区有色金属企业总部的汇聚点。"
         }
       ],
       picList: [
+          { url: "/static/images/corporatestyle/co-1.jpg", hdurl: '/static/images/corporatestyle/co-1-hd.png'},
         { url: "/static/images/corporatestyle/pic-1.png", hdurl: '/static/images/corporatestyle/pic-1-hd.jpg'},
         { url: "/static/images/corporatestyle/co-3.jpg", hdurl: '/static/images/corporatestyle/co-3-hd.jpg'},
         { url: "/static/images/corporatestyle/co-2.png", hdurl: '/static/images/corporatestyle/co-2-hd.jpg'},
-        { url: "/static/images/corporatestyle/co-1.jpg", hdurl: '/static/images/corporatestyle/co-1-hd.png'},
-        { url: "/static/images/corporatestyle/pic-5.png", hdurl: '/static/images/corporatestyle/pic-5-hd.jpg'}
+        // { url: "/static/images/corporatestyle/pic-5.png", hdurl: '/static/images/corporatestyle/pic-5-hd.jpg'}
       ]
     };
   },
