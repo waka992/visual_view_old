@@ -4,7 +4,7 @@
     <Header title="合作伙伴" />
 
     <div class="body">
-      <FriendGraph class="friends" height="80vh" />
+      <FriendGraph class="friends" height="88vh" />
     </div>
   </div>
 </template>
