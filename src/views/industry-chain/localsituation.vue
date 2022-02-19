@@ -17,7 +17,7 @@
         <div class="desc">
           <div class="prod-map">
             <FoshanMapProd ref="abc" :height="'210px'" :width="'210px'" />
-            <div class="labels" v-for="(v, i) in foshanMapLabels" :key="i" :style="'top:'+i*30+'px;'">
+            <div class="labels" v-for="(v, i) in foshanMapLabels" :key="i" :style="'top:'+(i*30 - 15)+'px;'">
               <div
                 class="label-icon"
                 :style="'background:' + v.color + ';'"
@@ -53,7 +53,7 @@
         <div class="title">
           <div class="text">铜概况</div>
         </div>
-        <div class="desc">
+        <div class="desc"  style="padding-bottom:130px;">
           <div v-for="(v, k) in introCu" :key="k" class="item">
             <div class="t1">
               <div class="t2"></div>
@@ -169,7 +169,7 @@ export default {
           info:
             "佛山铝产业产值占全市有色金属行业产值的60%以上，从业人员约5万人。"
         },
-        { info: "全国“建筑铝型材20强”中，广东占了9家，其中佛山有6家；" },
+        { info: "全国“建筑铝型材20强”中，广东占9家，其中佛山地区占6家，分别是：广东兴发铝业有限公司、广东凤铝铝业有限公司、广东坚美铝型材厂（集团）有限公司、广亚铝业有限公司、广东华昌铝厂有限公司、广东伟业铝厂集团有限公司。" },
         { info: "南海区大沥镇被誉为“中国铝材第一镇”、中国有色金属名镇”。" }
       ],
       introCu: [
@@ -181,10 +181,7 @@ export default {
           info:
             "佛山全市铜行业企业大部分集中在铜线、管及零部件加工，为下游家电（冰箱、空调等）、电子等行业服务。（重点行业信息：顺德北滘，中国家电制造业重镇，2020年北滘家电产业产值约2709亿元，占据全国家电业总产值十分之一）"
         },
-        {
-          info:
-            "2019年，全市铜材产量约为60万吨；铜产业的产值为312.8亿元，占全市有色产业产值的26.8%以上。其中，铜冶炼、压延加工的产值分别为32.9亿元、279.9亿元，分别占全市有色产业产值的2.8%、24.0%。"
-        }
+     
       ]
     };
   },
@@ -280,7 +277,7 @@ $blue2: #2a71b5;
 $yellow: #fec979;
 .body {
   // box-sizing: border-box;
-  padding-top: 20px;
+  padding-top: 10px;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -305,17 +302,17 @@ $yellow: #fec979;
 }
 .intro {
   height: 385px;
-  top: 20px;
+  top: 10px;
   left: 50px;
 }
 .intro-alum {
-  height: 560px;
-  top: 390px;
+  height: 605px;
+  top: 355px;
   left: 50px;
 }
 .intro-cu {
-  height: 560px;
-  top: 390px;
+  height: 605px;
+  top: 355px;
   right: 50px;
   
   .desc {
@@ -329,17 +326,17 @@ $yellow: #fec979;
 
 .intro {
   .desc {
-    height: 308px;
+    height: 288px;
   }
 }
 
 .intro-map {
   height: 365px;
-  top: 20px;
+  top: 10px;
   right: 50px;
 
   .desc {
-    height: 308px;
+    height: 288px;
   }
 
   // 饼图
@@ -443,7 +440,7 @@ $yellow: #fec979;
   // justify-content: space-evenly;
   // height: 400px;
   .item-intro {
-    margin: 10px 0;
+    margin: 6px 0;
   }
   .item-list-img {
     position: absolute;

@@ -28,6 +28,9 @@ let option = {
       length: 0,
       alignWithLabel: true,
     },
+    axisLabel: {
+        interval: 0
+    },
     axisLine: {
       lineStyle: {
         width: 2,

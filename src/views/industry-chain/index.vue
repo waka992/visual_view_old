@@ -21,12 +21,13 @@
         </div>
         <div>
           <div class="title">
-            <div class="text">{{mode.index == 0 ? '精炼铜' : '铝土矿'}}进口来源国家排名</div>
+            <div class="text">我国铜铝在全球地位</div>
           </div>
           <div class="desc">
-            <ReserveMap ref="abc" :height="'31vh'" :index="mode.index"/>
+            <ProductionBar ref="importpercent" :height="'13vh'"/>
           </div>
         </div>
+     
         <div class="btns">
           <div @click="$router.push({ path: '/supply', name: 'supply', params:{type: mode.index}})" class="btn btn1">
             <img src="/static/images/industrychain-1.png" alt="" srcset="" />
@@ -49,15 +50,15 @@
             <ProductionBar ref="abc1" :height="'13vh'"/>
           </div>
         </div>
-
-        <div style="margin-top:13px;">
+        <div  style="margin-top:13px;">
           <div class="title">
-            <div class="text">我国铜铝在全球地位</div>
+            <div class="text">{{mode.index == 0 ? '精炼铜' : '铝土矿'}}进口来源国家排名</div>
           </div>
           <div class="desc">
-            <ProductionBar ref="importpercent" :height="'13vh'"/>
+            <ReserveMap ref="abc" :height="'31vh'" :index="mode.index"/>
           </div>
         </div>
+    
       </div>
       
     </div>
@@ -265,6 +266,17 @@ export default {
         ],
       };
 
+      if (mode == 2) {
+        option.series[0].label.formatter = (e) => {
+          return e.data.value + '%'
+        }
+      }
+      else {
+        option.series[0].label.formatter = (e) => {
+          return e.data.value + '万吨'
+        }
+      }
+
       industrychain
         .materialimportsource({
           ordering: "-amount",
@@ -426,7 +438,6 @@ export default {
             option.series[0].data.unshift(value);
           });
 
-          option.xAxis.data[4] = '2021 01-11' // 暂时没有12月数据
 
           this.$refs.abc1.updateChart(option);
         });
@@ -704,9 +715,9 @@ export default {
       };
       option.xAxis.data = [];
       option.series[0].data = [];
-      option.xAxis.data = ['矿储量占比','矿产量占比','电解铜/铝产量占比','电解铜/铝消费占比']
+      option.xAxis.data = ['矿储量占比','铜国/铝国产矿占比','电解铜/铝产量占比','电解铜/铝消费占比']
       option.series[0].data = [3,8,42,59]
-      option.series[1].data = [3,20,57,53]
+      option.series[1].data = [3,40,57,53]
       this.$refs.importpercent.updateChart(option);
     }
   },
