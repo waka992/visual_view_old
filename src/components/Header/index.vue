@@ -58,6 +58,7 @@
         padding-top: 10px;
 
         .title {
+            user-select: none;
             height: 9vh;
             background: url("~@/assets/images/exchangedata/xiankuang-dingbu.png");
             background-size: 100% 100%;

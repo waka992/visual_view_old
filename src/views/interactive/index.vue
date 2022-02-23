@@ -242,6 +242,9 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+    .subject {
+        user-select: none;
+    }
     .decoration1 {
         height: 45vh;
         width: 25vw;

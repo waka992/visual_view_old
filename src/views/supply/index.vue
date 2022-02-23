@@ -570,6 +570,10 @@ $yellow: #fec979;
   color: $white;
   font-size: 20px;
 
+  .text,.t1,.d1,.btns {
+      user-select: none;
+  }
+
   .title {
     // border-left: 5px solid $yellow;
     background: $blue;

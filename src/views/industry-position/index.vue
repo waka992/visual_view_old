@@ -78,6 +78,7 @@
         display: flex;
         flex-direction: row;
         .grid {
+            user-select: none;
             margin-left: 4vw;
             height: 55vh;
             width: 20vw;

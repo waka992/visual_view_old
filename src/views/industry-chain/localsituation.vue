@@ -284,6 +284,9 @@ $yellow: #fec979;
   height: 90vh;
   position: relative;
 }
+.text,.d1,.label-info,.bg,.chart-title3,.chart-title {
+    user-select: none;
+}
 .h {
   display: flex;
   flex-direction: row;

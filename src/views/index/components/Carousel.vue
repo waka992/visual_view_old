@@ -1,8 +1,8 @@
 <template>
     <div class="example-3d">
-        <swiper class="swiper" :options="swiperOption" @click-slide="jumpTo">
+        <swiper class="swiper" :options="swiperOption" >
             <swiper-slide v-for="(item,i) in swiperList" :key="i">
-                <img :src="item.src" :alt="item.alt" />
+                <img :src="item.src" :alt="item.alt"  @click.stop="jump(item.path)"/>
             </swiper-slide>
         </swiper>
         <div class="swiper-decoration"></div>
@@ -24,7 +24,7 @@ export default {
     data() {
         return {
             swiperOption: {
-                loop: true,
+                loop: false,
                 grabCursor: true,
                 effect: "coverflow",
                 grabCursor: true,
@@ -64,6 +64,12 @@ export default {
         jumpTo(i, reali) {
             let path = this.swiperList[reali].path
             this.$router.push({path: path})
+        },
+        jump(path) {
+            this.$router.push({path: path})
+        },
+        clickHandle(e) {
+            console.log(e)
         }
     }
 };

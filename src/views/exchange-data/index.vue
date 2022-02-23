@@ -73,11 +73,11 @@
                         <el-row >
                             <el-col :span="12">
                                 <Pie :year="tradeYear" :type="'country'" :height="'23vh'"/>
-                                <div style="text-align:center;margin-top:0vh;">中国占世界消费量比重</div>
+                                <div style="text-align:center;margin-top:0vh;user-select: none;">中国占世界消费量比重</div>
                             </el-col>
                              <el-col :span="12">
                                 <Pie :year="tradeYear" :type="'platform'" :height="'23vh'"/>
-                                <div style="text-align:center;margin-top:0vh;">占国内现货平台交易量比重</div>
+                                <div style="text-align:center;margin-top:0vh;user-select: none;">占国内现货平台交易量比重</div>
                             </el-col>
                         </el-row>
                     </div>
@@ -146,12 +146,16 @@
     $blue: #00294d;
 
     * { padding: 0; margin: 0;}
+    .main-title,.text,.icon {
+        user-select: none;
+    }
 
     .body {
         padding: 20px;
         display: flex;
         flex-direction: row;
         color: $white;
+
 
         .main {
             height: 85vh;

@@ -496,6 +496,9 @@ $blue1: #a9d7f9;
 $blue2: #2a71b5;
 $yellow: #fec979;
 
+.text,.btn {
+    user-select: none;
+}
 .body {
   // box-sizing: border-box;
   padding: 0 20px;

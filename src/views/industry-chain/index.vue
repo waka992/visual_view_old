@@ -715,7 +715,7 @@ export default {
       };
       option.xAxis.data = [];
       option.series[0].data = [];
-      option.xAxis.data = ['矿储量占比','铜国/铝国产矿占比','电解铜/铝产量占比','电解铜/铝消费占比']
+      option.xAxis.data = ['矿储量占比','矿自给率','电解铜/铝产量占比','电解铜/铝消费占比']
       option.series[0].data = [3,8,42,59]
       option.series[1].data = [3,40,57,53]
       this.$refs.importpercent.updateChart(option);
@@ -742,6 +742,10 @@ $yellow: #fec979;
   flex-direction: row;
   color: $white;
   position: relative;
+
+  .pos,.text,.btns {
+      user-select: none;
+  }
 
   .title {
     // border-left: 5px solid $yellow;
