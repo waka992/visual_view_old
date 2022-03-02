@@ -428,7 +428,7 @@ export default {
       option = {
         animation: false,
         series,
-        // 下列xaxis和 yaxis的配置不能删，删了有几率报错
+        // 下列xaxis和 yaxis的配置不能删，删了有几率报错，echart源码需要读取这两个属性否则undefined
         xAxis: {
             show: false,
             type: "value",
