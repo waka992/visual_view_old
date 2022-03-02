@@ -111,14 +111,21 @@ export default {
           //   },
         ],
       },
+      modeSetFlag: false, // 限制铜铝按钮操作太快
     };
   },
   mounted() {
+    this.modeSetFlag = false
     this.get_fly(1);
     this.mode_sel(this.mode.list[0], 0);
   },
   methods: {
     mode_sel(v, k) {
+        if (this.modeSetFlag) {return}
+        this.modeSetFlag = true
+        setTimeout(() => {
+            this.modeSetFlag = false
+        }, 1000);
       this.mode.index = k;
       this.get_sort(v.val);
       this.get_trend(v.val);

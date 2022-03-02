@@ -347,8 +347,8 @@ export default {
   },
   methods: {
     initChart() {
-      this.chart = echarts.init(this.$el);
-      this.updateChart(option);
+        this.chart = echarts.init(this.$el);
+        this.updateChart(option);
     },
     updateChart(opt) {
       this.chart.setOption(opt);
@@ -428,6 +428,15 @@ export default {
       option = {
         animation: false,
         series,
+        // 下列xaxis和 yaxis的配置不能删，删了有几率报错
+        xAxis: {
+            show: false,
+            type: "value",
+        },
+        yAxis: {
+            show: false,
+            type: "value",
+        },
       };
 
       this.updateChart(option);

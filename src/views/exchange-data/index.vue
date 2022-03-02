@@ -56,12 +56,12 @@
                         <div class="aside-right-content">
                             <div><img class="icon" src="~@/assets/images/exchangedata/tong-icon.png"/><span class="text">铜</span></div>
                             <div><img class="icon" src="~@/assets/images/exchangedata/qian.png"/><span class="text">铅</span></div>
-                            <div><img class="icon" src="~@/assets/images/exchangedata/tonggan-icon.png"/><span class="text">铜杆</span></div>
+                            <div><img class="icon" src="~@/assets/images/exchangedata/tonggan-icon.png"/><span class="text">镍</span></div>
                         </div>
                         <div class="aside-right-content">
                             <div><img class="icon" src="~@/assets/images/exchangedata/lv.png"/><span class="text">铝</span></div>
                             <div><img class="icon" src="~@/assets/images/exchangedata/xin-icon.png"/><span class="text">锌</span></div>
-                            <div><img class="icon" src="~@/assets/images/exchangedata/lvding-icon.png"/><span class="text">铝锭</span></div>
+                            <div><img class="icon" src="~@/assets/images/exchangedata/lvding-icon.png"/><span class="text">锡</span></div>
                         </div>
                     </div>
                 </div>
