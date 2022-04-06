@@ -390,7 +390,10 @@ export default {
             symbol: "circle",
             symbolSize: 10, //这里也是可以用一个函数的，根据数据来决定标记的大小
             label: {
-              show: false,
+              show: true,
+              formatter: (params) => {
+                  return params.name
+              }
             },
             tooltip: {
               show: false,
@@ -442,17 +445,17 @@ export default {
           let data = []
           if (mode === 1) {
              data = [
-               {"id":1,"longitude_start":-47.55,"latitude_start":-15.47,"longitude_end":115.27226,"latitude_end":38.635842},
-               {"id":2,"longitude_start":-77.02,"latitude_start":39.91,"longitude_end":115.27226,"latitude_end":38.635842},
-               {"id":3,"longitude_start":-60.00,"latitude_start":-36.30,"longitude_end":115.27226,"latitude_end":38.635842},
+               {"id":1,"longitude_start":-47.55,"latitude_start":-15.47,"longitude_end":115.27226,"latitude_end":38.635842, name: '巴西'},
+               {"id":2,"longitude_start":-77.02,"latitude_start":39.91,"longitude_end":115.27226,"latitude_end":38.635842, name: '美国'},
+               {"id":3,"longitude_start":-60.00,"latitude_start":-36.30,"longitude_end":115.27226,"latitude_end":38.635842, name: '阿根廷'},
             ]
           }
           else {
             // data = e.data.results;
             
             data = [
-               {"id":4,"longitude_start":-77.02,"latitude_start":39.91,"longitude_end":115.27226,"latitude_end":38.635842},
-               {"id":5,"longitude_start":30.28,"latitude_start":50.30,"longitude_end":115.27226,"latitude_end":38.635842},
+               {"id":4,"longitude_start":-77.02,"latitude_start":39.91,"longitude_end":115.27226,"latitude_end":38.635842, name: '美国'},
+               {"id":5,"longitude_start":30.28,"latitude_start":50.30,"longitude_end":115.27226,"latitude_end":38.635842, name: '乌克兰'},
             ]
           }
           option.series[0].data = [];
@@ -476,9 +479,11 @@ export default {
 
             option.series[0].data.push({
               value: [start_x, start_y],
+              name: v.name
             });
             option.series[0].data.push({
               value: [end_x, end_y],
+              name: ''
             });
             option.series[1].data.push({
               coords: [

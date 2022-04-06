@@ -489,7 +489,10 @@ export default {
             symbol: "circle",
             symbolSize: 10, //这里也是可以用一个函数的，根据数据来决定标记的大小
             label: {
-              show: false,
+              show: true,
+              formatter: (params) => {
+                  return params.name
+              }
             },
             tooltip: {
               show: false,
@@ -537,24 +540,20 @@ export default {
         ],
       };
 
-      industrychain
-        .flyline({
-          mode: mode, // 0 铜 1 铝
-          fields:
-            "id,longitude_start,latitude_start,longitude_end,latitude_end",
-        })
-        .then((e) => {
-          if (e.code != 1000) {
-            return;
-          }
+  
           // 铝
           let data = []
           if (mode === 2) {
-            data = [{"id":6,"longitude_start":134.846984,"latitude_start":-25.431389,"longitude_end":115.27226,"latitude_end":38.635842},{"id":7,"longitude_start":-10.051821,"latitude_start":10.442355,"longitude_end":115.27226,"latitude_end":38.635842},{"id":8,"longitude_start":117.165486,"latitude_start":0.138001,"longitude_end":115.27226,"latitude_end":38.635842}]
+            data = [{"id":6,"longitude_start":134.846984,"latitude_start":-25.431389,"longitude_end":115.27226,"latitude_end":38.635842, name:'澳大利亚'},
+            {"id":7,"longitude_start":-10.051821,"latitude_start":10.442355,"longitude_end":115.27226,"latitude_end":38.635842, name:'几内亚'},
+            {"id":8,"longitude_start":120.146969,"latitude_start":-2.239847,"longitude_end":115.27226,"latitude_end":38.635842, name:'印度尼西亚'}]
           }
           else {
             // data = e.data.results;
-            data = [{"id":2,"longitude_start":139.630281,"latitude_start":36.661181,"longitude_end":115.27226,"latitude_end":38.635842},{"id":3,"longitude_start":68.248769,"latitude_start":47.97209,"longitude_end":115.27226,"latitude_end":38.635842},{"id":4,"longitude_start":134.846984,"latitude_start":-25.431389,"longitude_end":115.27226,"latitude_end":38.635842},{"id":5,"longitude_start":-75.619787,"latitude_start":-9.422664,"longitude_end":115.27226,"latitude_end":38.635842}]
+            data = [{"id":2,"longitude_start":139.630281,"latitude_start":36.661181,"longitude_end":115.27226,"latitude_end":38.635842, name:'日本'},
+            {"id":3,"longitude_start":68.248769,"latitude_start":47.97209,"longitude_end":115.27226,"latitude_end":38.635842, name:'哈萨克斯坦'},
+            {"id":4,"longitude_start":134.846984,"latitude_start":-25.431389,"longitude_end":115.27226,"latitude_end":38.635842, name:'澳大利亚'},
+            {"id":5,"longitude_start":-71.03774,"latitude_start":-29.434142,"longitude_end":115.27226,"latitude_end":38.635842, name:'智利'}]
           }
           option.series[0].data = [];
           option.series[1].data = [];
@@ -577,9 +576,11 @@ export default {
 
             option.series[0].data.push({
               value: [start_x, start_y],
+              name: v.name
             });
             option.series[0].data.push({
               value: [end_x, end_y],
+              name: ''
             });
             option.series[1].data.push({
               coords: [
@@ -590,7 +591,6 @@ export default {
           });
 
           this.$refs.abc2.updateChart(option);
-        });
     },
     // 铜铝进口占比
     getImport(mode = 1) {

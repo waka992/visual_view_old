@@ -65,6 +65,8 @@ let option = {
       symbolSize: 10, //这里也是可以用一个函数的，根据数据来决定标记的大小
       label: {
         show: false,
+        color: '#fff',
+        offset: [0, 18]
       },
       tooltip: {
         show: false,
