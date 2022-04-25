@@ -1,16 +1,18 @@
 import request from '@/utils/request'
+import requestCenter from '@/utils/requestCenter'
 /**
  * 指数
  */
 // 华南铝价
 export function aluminumPrice(query) {
-    return request({
-        url: 'api/v1/index/hnaluprice/',
+    return requestCenter({
+        // url: 'api/v1/index/hnaluprice/',
+        url: 'api/v1/openapi/hnljquote/',
         method: 'get',
         params: {
-            ordering : '-statis_date',
-            fields  : 'id,price,high_price,low_price,statis_date,change',
-            limit  : '1' 
+            ordering: '-statis_date',
+            // fields: 'id,price,high_price,low_price,statis_date,change',
+            limit: '1'
         }
     })
 }
@@ -39,11 +41,10 @@ export function spotIndex(query) {
         url: 'api/v1/index/spotindex/',
         method: 'get',
         params: {
-            ordering : '-statis_date',
-            is_composite : 'true',
-            fields  : 'id,statis_date,index,change,chg',
-            limit  : '20' 
+            ordering: '-statis_date',
+            is_composite: 'true',
+            fields: 'id,statis_date,index,change,chg',
+            limit: '20'
         }
     })
 }
-

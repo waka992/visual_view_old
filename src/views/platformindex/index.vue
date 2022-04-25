@@ -28,7 +28,7 @@
                     <div class="subject">华南铝价</div>
                     <div class="desc">
                         <!-- {{ aluminumPrice.price }} -->
-                        <count-to :start-val="0" :end-val="aluminumPrice.price" :duration="2000" class="card-panel-num" separator=""/>
+                        <count-to :start-val="0" :end-val="aluminumPrice.hnalu_price" :duration="2000" class="card-panel-num" separator=""/>
                         <div v-if="Math.sign(aluminumPrice.change) === 1" class="desc-up">
                             {{ this.aluminumPrice.change }}&uarr;
                         </div> 
@@ -40,11 +40,11 @@
                 <div class="title-decoration"></div>
                 <div class="desc">
                     <div class="subject">
-                        最低 {{ aluminumPrice.low_price }} — 最高  {{ aluminumPrice.high_price }}
+                        最低 {{ aluminumPrice.hnalu_price_low }} — 最高  {{ aluminumPrice.hnalu_price_high }}
                     </div>
                     <div class="time">
                         <img src="~@/assets/images/platformindex/title-time.png"/>
-                        {{ aluminumPrice.statis_date | parseTime('{y}.{m}.{d}') }}
+                        {{ aluminumPrice.date | parseTime('{y}.{m}.{d}') }}
                     </div> 
                 </div>
             </div>
