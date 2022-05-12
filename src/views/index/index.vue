@@ -29,7 +29,7 @@
         position: relative;
     
         background: url("~@/assets/images/index/title.png") center 5vh no-repeat;
-        background-size: 90vw 25vh; 
+        background-size: 97vw 29vh; 
 
         .title-decoration{
             position: absolute;
