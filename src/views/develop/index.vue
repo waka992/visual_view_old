@@ -7,7 +7,7 @@
         <div class="aside left" >
                 <div class="intro" style="margin-bottom: 30px;" >
                     <div class="title">
-                        <div class="text">概况</div>
+                        <div class="text">交易中心简介</div>
                     </div>
                     <div class="desc" style="height: 24.5vh;">
                         广东粤汇金属交易中心，是佛山市唯一一家规范保留类的大宗商品现货交易场所。一直秉承“立足产业，服务实体”的理念，通过“产业+金融”的模式，为南海有色金属贸易从铺位经济转向席位经济、实现有色金属产业升级服务。

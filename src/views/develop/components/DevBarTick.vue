@@ -5,7 +5,6 @@
 <script>
     import echarts from 'echarts'
     require('echarts/theme/macarons') // echarts theme
-    import { tradeVolumeYear } from "@/api/transaction";
     
     export default {
         props: {
@@ -75,7 +74,7 @@
                         loopData.push()
                         for (let i = 0; i < loopData.length; i++) {
                             this.xData[i] = loopData[i].year
-                            this.yData[i] = Number(loopData[i].amount).toFixed(2)
+                            this.yData[i] = Number(loopData[i].amount).toFixed(0)
                         }
                         this.initChart();
             },
@@ -91,7 +90,7 @@
                     },
                     textStyle: {
                         fontStyle: {
-                            color: '#fcc26f'
+                            color: '#fcc26f',
                         }
                     },
                     xAxis: {
@@ -106,6 +105,11 @@
                                 width: 2,
                                 color: '#1e95f0'
                             },
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                fontSize: 40
+                            }
                         },
                         data: this.xData,
                     },
@@ -158,7 +162,6 @@
                         label: {
                             show: true,
                             position: 'top',
-                            fontSize: 20,
                             formatter: (params) => {
                                 if (params.name == 2014 || params.name == 2021) {
                                     return params.data

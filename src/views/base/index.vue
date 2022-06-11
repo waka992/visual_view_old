@@ -17,19 +17,14 @@
             <div class="d1">
               {{ v.info }}
             </div>
-            <img
-              class="item-list-img"
-              src="/static/images/foshan-star.png"
-              alt=""
-            />
           </div>
         </div>
         <div class="chart">
           <div class="chart-title-left">
-            有色金属加工规模
+            有色金属加工规模全国占比
           </div>
           <div class="chart-title-right">
-            欧洲市场部分产品份额
+            窗帘导轨和户外遮阳产品欧洲市场占比
           </div>
           <div class="chart-left">
               <IndustrySituation ref="situationChart1" :height="'210px'" :width="'235px'" />
@@ -46,7 +41,7 @@
         </div>
         <div class="desc"  style="padding-bottom:130px;">
             <div class="contract">
-                隐藏着众多的行业“隐形冠军”，全国“建筑铝型材20强”中，广东占了9家，其中佛山地区有6家，分别是：
+                全国“建筑铝型材20强”中，广东占了9家，其中佛山地区有6家，分别是：
             </div>
             <div class="item-lists">
                 <div v-for="(v, k) in introCu" :key="k" class="item">
@@ -66,11 +61,9 @@
         </div>
       </div>
 
-
-
       <div class="intro-map">
         <div class="title">
-          <div class="text">铜铝产量占比</div>
+          <div class="text">我国铜铝产量全球占比</div>
         </div>
         <div class="desc">
             <BaseProductionBar ref="baseimportpercent" :height="'30vh'"/>
@@ -110,7 +103,7 @@
         <div class="desc">
             <div class="item">
                 <div class="d1">
-                    为了更好地服务产业，2019年，粤汇交易中心同新华社合作，制定并发布了“华南铝价”，引导电解铝相关产品的交易定价，现在“华南铝价”已成为广东、上海、河南等地重要的定价参照标准。
+                    为了更好地服务产业，2019年，粤汇金属交易中心同新华社合作，制定并发布了“华南铝价”，引导电解铝相关产品的交易定价，现在“华南铝价”已成为广东、上海、河南等地重要的定价参照标准。
                 </div>
             </div>
         </div>
@@ -155,14 +148,6 @@ export default {
           info:
             "大沥镇素有“中国铝材第一镇”、“中国有色金属名镇”的称号"
         },
-        {
-          info:
-            "南海有色金属加工规模占全国50%"
-        },
-        {
-        info:
-            "在欧洲市场如窗帘导轨、户外遮阳等产品，大沥厂家占有60%的市场份额"
-        }
       ],
       introCu: [
  
@@ -215,7 +200,7 @@ export default {
             data: [
               {
                 value: 50,
-                name: "其他地区",
+                name: "其他",
               },
               {
                 value: 50,
@@ -240,7 +225,7 @@ export default {
               },
               {
                 value: 60,
-                name: "大沥厂家 60%",
+                name: "大沥 60%",
               },
             ]
           }
@@ -473,6 +458,10 @@ $yellow: #fec979;
   .desc {
     height: 180px;
   }
+  .d1 {
+    padding-top: 26px;
+      line-height: 38px !important;
+    }
 }
 
 .intro-cu {
@@ -544,7 +533,7 @@ $yellow: #fec979;
 
 .chart-title-left,.chart-title-right {
   position: absolute;
-  top: 18px;
+  top: -18px;
   width: 100%;
   font-weight: 500;
   letter-spacing: 2px;
