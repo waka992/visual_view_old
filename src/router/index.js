@@ -220,6 +220,31 @@ export const constantRouterMap = [{
             title: '企业风采',
         },
     },
+
+    /**
+     * 发展历程
+     */
+    {
+        path: '/develop',
+        component: () =>
+            import ('@/views/develop/index'),
+        name: 'develop',
+        meta: {
+            title: '发展历程',
+        },
+    },
+    /**
+     * 产业基础
+     */
+    {
+        path: '/base',
+        component: () =>
+            import ('@/views/base/index'),
+        name: 'base',
+        meta: {
+            title: '产业基础',
+        },
+    },
     /**
      * 八大优势
      */

@@ -51,6 +51,7 @@ export default {
                 {src: require('@/assets/images/index/ncp.png'), alt: '农产品概况', path: 'agricultureChain'},
                 {src: require('@/assets/images/index/zs.png'), alt: '指数', path: 'platformindex'},
                 {src: require('@/assets/images/index/jysj.png'), alt: '交易数据', path: 'exchangedata'},
+                {src: require('@/assets/images/index/fzlc.png'), alt: '发展历程', path: 'develop'},
                 {src: require('@/assets/images/index/cyl.png'), alt: '产业链', path: 'industrychain'},
                 {src: require('@/assets/images/index/qyfc.png'), alt: '企业风采', path: 'corporatestyle'},
                 {src: require('@/assets/images/index/hydw.png'), alt: '行业定位', path: 'industryposition'},
