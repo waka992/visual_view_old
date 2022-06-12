@@ -17,9 +17,8 @@ let option = {
     },
   },
   textStyle: {
-    fontStyle: {
-      color: "#fcc26f",
-    },
+      color: "#addcfe",
+      fontSize: 16
   },
   xAxis: {
     type: "category",
@@ -30,7 +29,7 @@ let option = {
     },
     axisLabel: {
         interval: 0,
-        fontSize: 20
+        fontSize: 16
     },
     axisLine: {
       lineStyle: {

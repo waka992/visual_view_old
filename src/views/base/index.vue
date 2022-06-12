@@ -266,9 +266,7 @@ export default {
           },
         },
         textStyle: {
-          fontStyle: {
-            color: "#fcc26f",
-          },
+      
         },
         xAxis: {
           type: "category",
@@ -283,9 +281,7 @@ export default {
               color: "#addcfe",
             },
           },
-          axisLabel: {
-            fontSize: 20
-          },
+    
           data: ["2月", "3月", "4月", "5月", "6月", "7月", "8月"],
         },
         yAxis: {
@@ -320,8 +316,8 @@ export default {
         grid: {
           left: 50,
           right: 10,
-          top: 20,
-          bottom: 20,
+          top: 40,
+          bottom: 40,
           show: true,
           borderColor: "transparent",
           backgroundColor: "rgba(63,28,85,0.2)",

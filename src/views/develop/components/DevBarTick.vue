@@ -89,9 +89,7 @@
                         }
                     },
                     textStyle: {
-                        fontStyle: {
-                            color: '#fcc26f',
-                        }
+                        color: '#fcc26f',
                     },
                     xAxis: {
                         type: 'category',
@@ -108,7 +106,7 @@
                         },
                         axisLabel: {
                             textStyle: {
-                                fontSize: 40
+                                fontSize: 13
                             }
                         },
                         data: this.xData,
@@ -148,7 +146,7 @@
                     grid: {
                         left: 50,
                         right: 10,
-                        top: 20,
+                        top: 40,
                         bottom: 20,
                     },
                     series: [{
@@ -162,6 +160,9 @@
                         label: {
                             show: true,
                             position: 'top',
+                            textStyle: {
+                                fontSize: 16
+                            },
                             formatter: (params) => {
                                 if (params.name == 2014 || params.name == 2021) {
                                     return params.data

@@ -55,9 +55,6 @@
                         }
                     },
                     textStyle: {
-                        fontStyle: {
-                            color: '#fcc26f',
-                        }
                     },
                     xAxis: {
                         type: 'category',
@@ -123,7 +120,7 @@
                             show: true,
                             position: 'top',
                             textStyle: {
-                                fontSize: 40
+                                fontSize: 16
                             },
                             formatter: (params) => {
                                 if (params.name == 2014 || params.name == 2021) {

@@ -20,8 +20,6 @@ let option = {
 
   grid: {
     left: "0%",
-    // right: "4%",
-    // top: "75%",
     bottom: "0%",
   },
 
@@ -31,6 +29,7 @@ let option = {
       radius: [0, "60%"],
       center: ["50%", "46%"],
       showEmptyCircle: false,
+
       data: [
         {
           value: 5,
@@ -51,10 +50,13 @@ let option = {
         color: "#fff",
         show: true,
         overflow: 'break',
-        position: 'inside'
+        position: 'inside',
+        textStyle: {
+            fontSize: 16
+        },
       },
       labelLine: {
-        show: true,
+        show: false,
         length: 4,
         lineStyle: {
           color: "#6EBAEE",
