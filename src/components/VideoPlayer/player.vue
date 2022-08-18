@@ -186,6 +186,9 @@
           self.$emit('ready', this)
         })
       },
+      showMenu(evt) {
+        console.log(evt)
+      },
       dispose(callback) {
         if (this.player && this.player.dispose) {
           if (this.player.techName_ !== 'Flash') {

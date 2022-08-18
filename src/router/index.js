@@ -211,10 +211,19 @@ export const constantRouterMap = [{
     /**
      * 企业风采
      */
+    // {
+    //     path: '/corporatestyle',
+    //     component: () =>
+    //         import ('@/views/corporatestyle/index'),
+    //     name: 'corporatestyle',
+    //     meta: {
+    //         title: '企业风采',
+    //     },
+    // },
     {
         path: '/corporatestyle',
         component: () =>
-            import ('@/views/corporatestyle/index'),
+            import ('@/views/corporatestyle/introplay'),
         name: 'corporatestyle',
         meta: {
             title: '企业风采',
