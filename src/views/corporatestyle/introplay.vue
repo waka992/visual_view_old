@@ -4,7 +4,7 @@
         <Header title="企业风采"/>
         <div class="content">
             <video-player class="vjs-custom-skin" ref="videoPlayer"
-            controls :options="playerOptions"  @ready="playerReadied" @play="onPlayerPlay($event)"  @ended="onPlayerEnded($event)" @pause="onPause($event)"></video-player>
+            controls :options="playerOptions"  @ready="playerReadied" @play="onPlayerPlay($event)"  @ended="onPlayerEnded($event)" @pause="onPlayerPause($event)"></video-player>
         </div>
     </div>
 </template>
@@ -23,7 +23,11 @@ export default {
         BackGround,
         videoPlayer
     },
-    
+    computed: {
+      myPlayer() {
+        return this.$refs.videoPlayer.player
+      }
+    },
 
     data() {
         return {
@@ -43,32 +47,30 @@ export default {
                 },
        
             },
-            myPlayer: '',
-            playstate: true
+            // myPlayer: '',
         };
     },
 
     methods: {
         // 视频加载完成回调
         playerReadied(e) {
-            this.myPlayer = e;
+            // this.myPlayer = e;
             this.myPlayer.requestFullscreen();
         },
 
         onPlayerPlay(e) {
             console.log('play')
-            this.playstate = true
             this.myPlayer.requestFullscreen();
         },
  
         // 结束回调
         onPlayerEnded (e) {
             console.log('end')
+            this.myPlayer.exitFullscreen();
         },
 
-
-        onPause(evt) {
-            this.playstate = false
+        onPlayerPause(e) {
+            console.log('pause')
             this.myPlayer.exitFullscreen()
         },
 
