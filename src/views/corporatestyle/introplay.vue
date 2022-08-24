@@ -2,7 +2,7 @@
     <div>
         <BackGround />
         <Header title="企业风采"/>
-        <div class="content">
+        <div class="content" @touchstart.prevent="playerTouch">
             <video-player class="vjs-custom-skin" ref="videoPlayer"
             controls :options="playerOptions"  @ready="playerReadied" @play="onPlayerPlay($event)"  @ended="onPlayerEnded($event)" @pause="onPlayerPause($event)"></video-player>
         </div>
@@ -45,8 +45,9 @@ export default {
                     remainingTimeDisplay: false,
                     fullscreenToggle: true  //全屏按钮
                 },
-       
+                
             },
+            playState: false,
             // myPlayer: '',
         };
     },
@@ -60,6 +61,7 @@ export default {
 
         onPlayerPlay(e) {
             console.log('play')
+            this.playState = true
             this.myPlayer.requestFullscreen();
         },
  
@@ -71,9 +73,16 @@ export default {
 
         onPlayerPause(e) {
             console.log('pause')
+            this.playState = false
             this.myPlayer.exitFullscreen()
         },
 
+        playerTouch(e) {
+            console.log('playerState  ===>' + this.playState)
+            if (this.playState) {
+                this.myPlayer.pause()
+            }
+        },
     },
 
 };
@@ -85,5 +94,9 @@ export default {
         width: 60vw;
 
         margin: 10vh 20vw;
+        touch-action: none;
+    }
+    .vjs-custom-skin {
+        touch-action: none;
     }
 </style>
