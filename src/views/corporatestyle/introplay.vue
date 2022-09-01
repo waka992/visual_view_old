@@ -35,7 +35,9 @@ export default {
                 fluid: true,
                 sources: [
                     {
-                        src: 'https://lhbibucket.oss-cn-shenzhen.aliyuncs.com/video/%E5%AE%A3%E4%BC%A00810.mp4',
+                        // src: 'https://lhbibucket.oss-cn-shenzhen.aliyuncs.com/video/%E5%AE%A3%E4%BC%A00810.mp4',
+                        src: '/video/video-4k.mp4',
+                        // src: '/video/video-1080p.mp4',
                         type: 'video/mp4'
                     }
                 ],
