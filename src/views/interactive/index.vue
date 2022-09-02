@@ -334,6 +334,9 @@
                 width: 3.3vw;
                 // margin: 0 2px;
                 background: url("~@/assets/images/interactive/logo-mini.png") center/cover no-repeat;
+                background-size: 80%;
+                background-color: #fff;
+                opacity: 0.9;
             }
 
             .one-info-text {
