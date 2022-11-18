@@ -627,7 +627,7 @@ $yellow: #fec979;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      height: 76vh;
+      height: 76.3vh;
       .item {
         flex: 1;
         .t1 {
