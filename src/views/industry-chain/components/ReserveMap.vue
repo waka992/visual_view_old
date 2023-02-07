@@ -13,7 +13,7 @@ let option = {
     show: false,
   },
   tooltip: {
-    trigger: "item",
+    trigger: "none",
   },
   grid: {
     left: "0%",

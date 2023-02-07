@@ -139,7 +139,7 @@ export default {
           show: false,
         },
         tooltip: {
-          trigger: "item",
+          trigger: "none",
         },
         grid: {
           left: "0%",
@@ -297,6 +297,13 @@ export default {
             return;
           }
           let data = e.data.results;
+        /**  增加data的处理，防止饼图大小差异太大 */
+          for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            data[i].percentage = Math.log(element.amount) - 1.6 // 大约-1.6图像比较合理
+          }
+        /**  增加data的处理，防止饼图大小差异太大 */
+          
 
           option.yAxis.data = [];
           option.series[0].data = [];
@@ -315,6 +322,7 @@ export default {
             let name = v.country.title;
             let name1 = `${k + 1} ${name}`;
             let value = v.amount;
+            let percentage = v.percentage
 
             // let color = random_color();
 
@@ -328,7 +336,7 @@ export default {
               }
             });
             option.series[1].data.unshift({
-              value,
+              value:percentage,
               name,
               itemStyle: {
                 color: colorArr[k]
@@ -342,7 +350,7 @@ export default {
     get_trend(mode = 1) {
       let option = {
         tooltip: {
-          trigger: "axis",
+          trigger: "none",
           axisPointer: {
             // 坐标轴指示器，坐标轴触发有效
             type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
@@ -723,8 +731,8 @@ export default {
       option.xAxis.data = [];
       option.series[0].data = [];
       option.xAxis.data = ['矿储量占比','矿自给率','电解铜/铝产量占比','电解铜/铝消费占比']
-      option.series[0].data = [3,8,42,60]
-      option.series[1].data = [3,40,57,59]
+      option.series[0].data = [3,8,43,55]
+      option.series[1].data = [3,40,59,59]
       this.$refs.importpercent.updateChart(option);
     }
   },
