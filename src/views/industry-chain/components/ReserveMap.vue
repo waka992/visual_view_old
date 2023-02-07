@@ -103,6 +103,7 @@ let option = {
         show: true,
         color: "#6EBAEE",
         overflow: 'none',
+        formatter: '{b}'
       },
       labelLine: {
         lineStyle: {
