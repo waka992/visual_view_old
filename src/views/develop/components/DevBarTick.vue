@@ -70,6 +70,10 @@
                         "year": 2021,
                         "amount": 4339.45
                     },
+                    {
+                        "year": 2022,
+                        "amount": 4454.2
+                    },
                     ];
                         loopData.push()
                         for (let i = 0; i < loopData.length; i++) {
@@ -164,7 +168,7 @@
                                 fontSize: 16
                             },
                             formatter: (params) => {
-                                if (params.name == 2014 || params.name == 2021) {
+                                if (params.name == 2014 || params.name == 2022) {
                                     return params.data
                                 }
                                 return ''

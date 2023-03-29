@@ -123,7 +123,7 @@
                                 fontSize: 16
                             },
                             formatter: (params) => {
-                                if (params.name == 2014 || params.name == 2021) {
+                                if (params.name == 2014 || params.name == 2022) {
                                     return params.data
                                 }
                                 return ''

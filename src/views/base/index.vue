@@ -384,9 +384,9 @@ export default {
       };
       option.xAxis.data = [];
       option.series[0].data = [];
-      option.xAxis.data = ['2000电解铜/铝产量占比','2021电解铜/铝产量占比']
-      option.series[0].data = [13,42]
-      option.series[1].data = [13,57]
+      option.xAxis.data = ['2000电解铜/铝产量占比','2022电解铜/铝产量占比']
+      option.series[0].data = [13,43]
+      option.series[1].data = [13,59]
       this.$refs.baseimportpercent.updateChart(option);
     },
 

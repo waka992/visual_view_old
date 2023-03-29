@@ -23,7 +23,7 @@
                     <div class="desc" style="height: 34vh">
                         <GDPPie :year="tradeYear"/>
                         <div class="gdp-desc">
-                            交易中心2021年交易额
+                            交易中心2022年交易额
                             占佛山第三产业GDP的<span class="gdp-hl">20%</span>
                         </div>
                     </div>
