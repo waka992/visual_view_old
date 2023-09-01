@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <div class="title">
+        <div class="title" :class="{'longDecorate': long }">
             <div class="left">广东粤汇金属交易中心</div>
             <div class="middle">{{ title }}</div>
             <div class="right">{{ nowDate | parseTime('{y} 年 {m}月 {d}日 {h}:{i}') }}</div>
@@ -20,6 +20,10 @@
                 type: String,
                 default: '标题'
             },
+            long: {
+                type: Boolean,
+                default: false
+            }
         },
 
         filters: {
@@ -85,6 +89,21 @@
             .right {
                 width: 35.9vw;
                 padding-left: 14vw;
+            }
+        }
+        .longDecorate {
+            background-image: url("~@/assets/images/exchangedata/xiankuang-dingbu-big.png");
+
+            .left {
+                width: 26vw;
+            }
+            .middle {
+                width: 37vw;
+                letter-spacing: 8px;
+            }
+            .right {
+                width: 27vw;
+                padding-left: 5vw;
             }
         }
     }

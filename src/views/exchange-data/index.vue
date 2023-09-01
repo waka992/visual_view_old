@@ -1,7 +1,7 @@
 <template>
     <div>
         <BackGround />
-        <Header title="交易数据"/>
+        <Header title="交易数据" />
 
         <div class="body">
             <div class="aside left">
